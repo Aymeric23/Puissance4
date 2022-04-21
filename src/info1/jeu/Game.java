@@ -1,26 +1,33 @@
+/* Game.java                                  14 avr. 2022
+ * IUT de Rodez, Info1 2021-2022 Groupe 4
+ */
+
+package info1.jeu;
+
 import java.util.Random;
 import java.util.Scanner;
 
-/*
- * Partie.java                                  14 avr. 2022
- * IUT de Rodez, Info1 2021-2022 Groupe 3, pas de copyright 
+/**
+ * Partie jouable par des joueurs avec une grille de jeu
+ * @author aymeric.thevenet
+ *         romain.trimouille
  */
+public class Game {
 
-/** TODO commenter la responsabilité de cette classe
- * @author aymer
- *
- */
-public class Partie {
-
+    /** nom de cette partie */
+    private String name;
+    
     /**
-     * TODO commenter l'état initial atteint
+     * Définition des caractéristiques de la partie
+     * @param name nom de la partie
      */
-    public Partie() {
-        // TODO Auto-generated constructor stub
+    public Game(String name) {
+        this.name = name;
     }
     
-    /** TODO commenter le rôle de cette méthode (SRP)
-     * @param args
+    /** 
+     * Lancement de la partie
+     * @param args non utilisé
      */
     public static void main(String[] args) {
         
@@ -28,24 +35,24 @@ public class Partie {
         Scanner entree = new Scanner(System.in); 
         
         System.out.print("Entrez votre pseudo : ");
-        Joueur j1 = new Joueur(entree.next(),"T");
+        Player j1 = new Player(entree.next(),"T");
         System.out.print("Entrez votre pseudo : ");
-        Joueur j2 = new Joueur(entree.next(),"T");
+        Player j2 = new Player(entree.next(),"T");
         
-        Joueur joueurActuel = j1;
-        Joueur joueurAttente = j2;
-        Joueur joueurTemporaire;
+        Player joueurActuel = j1;
+        Player joueurAttente = j2;
+        Player joueurTemporaire;
         
         Random aleatoire = new Random();
         boolean couleur = aleatoire.nextBoolean();
         if (couleur) {
-            j1.setValue("R");
-            j2.setValue("J");
+            j1.setColor("R");
+            j2.setColor("J");
             joueurActuel = j1;
             joueurAttente = j2;
         } else {
-            j1.setValue("J");
-            j2.setValue("R");
+            j1.setColor("J");
+            j2.setColor("R");
             joueurActuel = j2;
             joueurAttente = j1;
         }        
@@ -53,12 +60,12 @@ public class Partie {
         int colonneChoisie;
         boolean ok = false;
         while (!ok) {
-            grid.afficherGrid();
+            grid.showGrid();
             System.out.print(joueurActuel.getPseudo() + " colonne : ");
             colonneChoisie = entree.nextInt();
             grid.setGrid(joueurActuel, colonneChoisie);
             
-            ok = grid.isAligner(joueurActuel);
+            ok = grid.isAlign(joueurActuel);
             
             joueurTemporaire = joueurAttente;
             joueurAttente = joueurActuel;
@@ -67,7 +74,7 @@ public class Partie {
         }
         
         String vainqueur;
-        if (grid.isAligner(joueurActuel)) {
+        if (grid.isAlign(joueurActuel)) {
             vainqueur = "Le vainqueur est " + joueurActuel.getPseudo();
         } else {
             vainqueur = "Egalité";
