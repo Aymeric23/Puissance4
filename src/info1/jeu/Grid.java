@@ -12,13 +12,20 @@ package info1.jeu;
 public class Grid {
     
     /** grille de jeu */
-    private static String grid[][];
+    private static String grid[][] = {
+                    {"", "", "", "", "", "", ""},
+                    {"", "", "", "", "", "", ""},
+                    {"", "", "", "", "", "", ""},
+                    {"", "", "", "", "", "", ""},
+                    {"", "", "", "", "", "", ""},
+                    {"", "", "", "", "", "", ""}
+    };
     
     /** ligne qui a été sélectionnée par le joueur */
-    private static int currentLine;
+    private int currentLine;
     
     /** colonne qui a été sélectionnée par le joueur */
-    private static int currentColumn;
+    private int currentColumn;
     
     /**
      * Définition des caractéristiques de la grille
@@ -39,7 +46,7 @@ public class Grid {
     /** 
      * Affiche la grille dans la console
      */
-    public void showGrid() {
+    public static void showGrid() {
         for (int i = 0; i < grid.length ; i++) {
             for (int j = 0; j < grid[i].length; j++) {
                 System.out.print(grid[i][j] + ' ');
@@ -84,7 +91,6 @@ public class Grid {
         return ok;
     }
 
-
     /**
      * Vérifie l'alignement diagonal de quatre jetons de la couleur d'un joueur
      * @param joueur joueur dont on vérifie l'alignement diagonal de ces pions
@@ -93,9 +99,105 @@ public class Grid {
      *         false sinon
      */
     private boolean isAlignDiagonally(Player joueur) {
-        return false; //bouchon
+        boolean ok;
+        int diagonalTopBottom;
+        int diagonalBottomTop;
+        
+        diagonalTopBottom = topLeft(joueur) + bottomRight(joueur);
+        diagonalBottomTop = bottomLeft(joueur) + topRight(joueur);
+        
+        ok = diagonalTopBottom + 1 >= 4 
+             || diagonalBottomTop + 1 >= 4? true : false;
+        return ok;
     }
 
+    /** 
+     * Compte le nombre de jetons de la couleur du joueur qui se situe en bas 
+     * à gauche du jeton courant
+     * @param  joueur joueur dont on compte les jetons de sa couleur
+     * @return le nombre de jeton de la couleur du joueur qui se situe en bas 
+     *         à gauche du jeton courant
+     */
+    private int bottomLeft(Player joueur) {
+        boolean ok = true;
+        int count = 0;
+        
+        for (int i = currentLine, j = currentColumn; ok && i < 5 && j > 0 && count <= 4; i++, j--) {
+            if (grid[i+1][j-1] == joueur.getColor()) {
+                ok = true;
+                count++;
+            } else {
+                ok = false;
+            }
+        }
+        return count;
+    }
+
+    /** 
+     * Compte le nombre de jetons de la couleur du joueur qui se situe en haut 
+     * à droite du jeton courant
+     * @param  joueur joueur dont on compte les jetons de sa couleur
+     * @return le nombre de jeton de la couleur du joueur qui se situe en haut
+     *         à droite du jeton courant
+     */
+    private int topRight(Player joueur) {
+        boolean ok = true;
+        int count = 0;
+        
+        for (int i = currentLine, j = currentColumn; ok && i > 0 && j < 6 && count <= 4; i--, j++) {
+            if (grid[i-1][j+1] == joueur.getColor()) {
+                ok = true;
+                count++;
+            } else {
+                ok = false;
+            }
+        }
+        return count;
+    }
+
+    /**
+     * Compte le nombre de jetons de la couleur du joueur qui se situe en bas 
+     * à droite du jeton courant
+     * @param  joueur joueur dont on compte les jetons de sa couleur
+     * @return le nombre de jeton de la couleur du joueur qui se situe en bas 
+     *         à droite du jeton courant
+     */
+    private int bottomRight(Player joueur) {
+        boolean ok = true;
+        int count = 0;
+        
+        for (int i = currentLine, j = currentColumn; ok && i < 5 && j > 6 && count <= 4; i++, j++) {
+            if (grid[i+1][j+1] == joueur.getColor()) {
+                ok = true;
+                count++;
+            } else {
+                ok = false;
+            }
+        }
+        return count;
+    }
+
+    /**
+     * Compte le nombre de jetons de la couleur du joueur qui se situe en haut 
+     * à gauche du jeton courant
+     * @param  joueur joueur dont on compte les jetons de sa couleur
+     * @return le nombre de jeton de la couleur du joueur qui se situe en haut
+     *         à gauche du jeton courant
+     */
+    private int topLeft(Player joueur) {
+        boolean ok = true;
+        int count = 0;
+        
+        for (int i = currentLine, j = currentColumn; ok && i > 0 && j > 0 && count <= 4; i--, j--) {
+            if (grid[i-1][j-1] == joueur.getColor()) {
+                ok = true;
+                count++;
+            } else {
+                ok = false;
+            }
+        }
+        return count;
+    }
 
     /** 
      * Vérifie l'alignement horizontal de quatre jetons de la couleur d'un joueur
@@ -105,9 +207,55 @@ public class Grid {
      *         false sinon
      */
     private boolean isAlignHorizontally(Player joueur) {
-        return false; //bouchon
+        boolean ok;
+        
+        ok = left(joueur) + right(joueur) + 1 >= 4 ? true : false;
+        return ok;
     }
 
+    /** 
+     * Compte le nombre de jetons de la couleur du joueur qui se situe à droite 
+     * du jeton courant
+     * @param  joueur joueur dont on compte les jetons de sa couleur
+     * @return le nombre de jeton de la couleur du joueur qui se situe à droite 
+     *         du jeton courant
+     */
+    private int right(Player joueur) {
+        boolean ok = true;
+        int count = 0;
+        
+        for (int j = currentColumn; ok && j < 6 && count <= 4; j++) {
+            if (grid[currentLine][j+1] == joueur.getColor()) {
+                ok = true;
+                count++;
+            } else {
+                ok = false;
+            }
+        }
+        return count;
+    }
+
+    /**
+     * Compte le nombre de jetons de la couleur du joueur qui se situe à gauche 
+     * du jeton courant
+     * @param  joueur joueur dont on compte les jetons de sa couleur
+     * @return le nombre de jeton de la couleur du joueur qui se situe à gauche 
+     *         du jeton courant
+     */
+    private int left(Player joueur) {
+        boolean ok = true;
+        int count = 0;
+        
+        for (int j = currentColumn; ok && j > 0 && count <= 4; j--) {
+            if (grid[currentLine][j-1] == joueur.getColor()) {
+                ok = true;
+                count++;
+            } else {
+                ok = false;
+            }
+        }
+        return count;
+    }
 
     /** 
      * Vérifie l'alignement vertical de quatre jetons de la couleur d'un joueur
@@ -117,7 +265,32 @@ public class Grid {
      *         false sinon
      */
     private boolean isAlignVertically(Player joueur) {
-        return false; //bouchon
+        boolean ok;
+        
+        ok = bottom(joueur) + 1 >= 4 ? true : false;
+        return ok;
+    }
+
+    /**
+     * Compte le nombre de jetons de la couleur du joueur qui se situe en bas 
+     * du jeton courant
+     * @param  joueur joueur dont on compte les jetons de sa couleur
+     * @return le nombre de jeton de la couleur du joueur qui se situe en bas 
+     *         du jeton courant
+     */
+    private int bottom(Player joueur) {
+        boolean ok = true;
+        int count = 0;
+        
+        for (int i = currentLine; ok && i < 5; i++) {
+            if (grid[i+1][currentColumn] == joueur.getColor()) {
+                ok = true;
+                count++;
+            } else {
+                ok = false;
+            }
+        }
+        return count;
     }
 
     /**
@@ -135,4 +308,5 @@ public class Grid {
     public void setCurrentColumn(int currentColumn) {
         this.currentColumn= currentColumn;
     }
+    
 }

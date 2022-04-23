@@ -17,12 +17,20 @@ public class Game {
     /** nom de cette partie */
     private String name;
     
+    /** mode de jeu de cette partie */
+    private int gamemode;
+    
     /**
      * Définition des caractéristiques de la partie
-     * @param name nom de la partie
+     * @param name nom de la partie, correspond à la date et l'heure du jour 
+     * du lancement de la partie
+     * @param gamemode mode de jeu de la partie, 1 pour une partie solo
+     *                                           2 pour une partie à deux
+     *                                           3 pour une partie en casse tête
      */
-    public Game(String name) {
+    public Game(String name, int gamemode) {
         this.name = name;
+        this.gamemode = gamemode;
     }
     
     /** 
@@ -55,8 +63,9 @@ public class Game {
             j2.setColor("R");
             joueurActuel = j2;
             joueurAttente = j1;
-        }        
+        }  
         
+        String vainqueur = "Egalité";
         int colonneChoisie;
         boolean ok = false;
         while (!ok) {
@@ -66,19 +75,16 @@ public class Game {
             grid.setGrid(joueurActuel, colonneChoisie);
             
             ok = grid.isAlign(joueurActuel);
+            if (grid.isAlign(joueurActuel)) {
+                grid.showGrid();
+                vainqueur = "Le vainqueur est " + joueurActuel.getPseudo();
+            }
             
             joueurTemporaire = joueurAttente;
             joueurAttente = joueurActuel;
             joueurActuel = joueurTemporaire;
-            System.out.println(ok);
         }
         
-        String vainqueur;
-        if (grid.isAlign(joueurActuel)) {
-            vainqueur = "Le vainqueur est " + joueurActuel.getPseudo();
-        } else {
-            vainqueur = "Egalité";
-        }
-        
+        System.out.println("Le vainqueur est : " + vainqueur);
     }
 }
