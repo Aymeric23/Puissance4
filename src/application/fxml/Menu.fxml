@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="box" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" spacing="14.0" stylesheets="@../../../src/application/css/application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controleur.Menu">
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label styleClass="menu-title" text="PUISSANCE">
+               <font>
+                  <Font size="96.0" />
+               </font>
+            </Label>
+            <Label styleClass="menu-title-4" text=" 4">
+               <font>
+                  <Font size="96.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" prefHeight="505.0" prefWidth="556.0" spacing="14.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#sceneGameSolo" prefHeight="90.0" prefWidth="556.0" styleClass="menu-button" text="Solo" />
+            <Button mnemonicParsing="false" onAction="#sceneGameDuo" prefHeight="90.0" prefWidth="556.0" styleClass="menu-button" text="Versus" />
+            <Button mnemonicParsing="false" onAction="#sceneGamePuzzle" prefHeight="90.0" prefWidth="556.0" styleClass="menu-button" text="Casse tête" />
+            <Button mnemonicParsing="false" onAction="#sceneListLoadGame" prefHeight="90.0" prefWidth="556.0" styleClass="menu-button" text="Charger une partie" />
+            <Button mnemonicParsing="false" onAction="#sceneRules" prefHeight="90.0" prefWidth="556.0" styleClass="menu-button" text="Règles" />
+            <Button mnemonicParsing="false" onAction="#leaveGame" prefHeight="90.0" prefWidth="556.0" styleClass="menu-button" text="Quitter" />
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="122.0" />
+   </padding>
+</VBox>
