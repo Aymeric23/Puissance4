@@ -36,10 +36,6 @@ public class GameDuo {
     private TextField pseudoP1;
     @FXML
     private TextField pseudoP2;
-    @FXML
-    private VBox V0;
-    @FXML
-    private VBox V1;
     
     /**
      * Change la scene actuelle par la scene qui correspond au menu
