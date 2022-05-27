@@ -39,7 +39,7 @@ public class Menu {
         FXMLLoader chargeurFXML = new FXMLLoader();
          
         // charge le fichier FXML
-        chargeurFXML.setLocation(getClass().getResource("../../application/" 
+        chargeurFXML.setLocation(getClass().getResource("/application/" 
                     + "fxml/GameSolo.fxml"));
          
         racine = chargeurFXML.load();
@@ -56,7 +56,7 @@ public class Menu {
         FXMLLoader chargeurFXML = new FXMLLoader();
          
         // charge le fichier FXML
-        chargeurFXML.setLocation(getClass().getResource("../../application/"
+        chargeurFXML.setLocation(getClass().getResource("/application/"
                     + "fxml/GameDuo.fxml"));
          
         racine = chargeurFXML.load();
@@ -74,7 +74,7 @@ public class Menu {
         FXMLLoader chargeurFXML = new FXMLLoader();
          
         // charge le fichier FXML
-        chargeurFXML.setLocation(getClass().getResource("../../application/"
+        chargeurFXML.setLocation(getClass().getResource("/application/"
                     +"fxml/GamePuzzle.fxml"));
          
         racine = chargeurFXML.load();
@@ -92,7 +92,7 @@ public class Menu {
         FXMLLoader chargeurFXML = new FXMLLoader();
          
         // charge le fichier FXML
-        chargeurFXML.setLocation(getClass().getResource("../../application/"
+        chargeurFXML.setLocation(getClass().getResource("/application/"
                     +"fxml/ListSaveGame.fxml"));
          
         racine = chargeurFXML.load();
@@ -109,7 +109,7 @@ public class Menu {
         FXMLLoader chargeurFXML = new FXMLLoader();
          
         // charge le fichier FXML
-        chargeurFXML.setLocation(getClass().getResource("../../application/"
+        chargeurFXML.setLocation(getClass().getResource("/application/"
                     +"fxml/Rules.fxml"));
          
         racine = chargeurFXML.load();

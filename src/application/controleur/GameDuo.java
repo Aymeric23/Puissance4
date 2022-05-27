@@ -51,7 +51,7 @@ public class GameDuo {
         FXMLLoader chargeurFXML = new FXMLLoader();
          
         // charge le fichier FXML
-        chargeurFXML.setLocation(getClass().getResource("../../application/"
+        chargeurFXML.setLocation(getClass().getResource("/application/"
                     +"fxml/Menu.fxml"));
          
         racine = chargeurFXML.load();
