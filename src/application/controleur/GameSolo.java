@@ -4,13 +4,18 @@
 package application.controleur;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
+import application.Game;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -23,6 +28,15 @@ public class GameSolo {
     private Stage stage;
     private Scene scene;
     private Parent racine;
+    
+    @FXML
+    private TextField pseudoP1;
+    @FXML
+    private TextField pseudoP2;
+    @FXML
+    private VBox V0;
+    @FXML
+    private VBox V1;
     
     /**
      * Change la scene actuelle par la scene qui correspond au menu
@@ -42,5 +56,42 @@ public class GameSolo {
         scene = new Scene(racine);
         stage.setScene(scene);
         stage.show();
+    }
+    
+    /** TODO commenter le rôle de cette méthode (SRP)
+     * @return le pseudo du joueur 1
+     */
+    @FXML
+    public String getPseudoP1() {
+        return pseudoP1.getText();
+    }
+    
+    /** TODO commenter le rôle de cette méthode (SRP)
+     * @return le pseudo du joueur 2
+     */
+    @FXML
+    public String getPseudoP2() {
+        return pseudoP2.getText();
+    }
+    
+    /** TODO commenter le rôle de cette méthode (SRP)
+     * @return l'indice de la colonne choisie par l'utilisateur
+     */
+    @FXML
+    public String getAccessibleText() {
+        String texte = V0.getAccessibleText();
+        System.out.println(texte);
+//        return getAccessibleText();
+        return texte; //bouchon
+    }
+    
+    /** TODO commenter le rôle de cette méthode (SRP)
+     * @param args
+     * @throws Exception
+     */
+    public static void main(String[] args) throws Exception {
+        DateTimeFormatter date = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        Game newGameSolo = new Game(date.format(LocalDateTime.now()), 1);
+        newGameSolo.startGame();
     }
 }

@@ -18,7 +18,7 @@
             </VBox>
             <HBox prefHeight="100.0" prefWidth="200.0" styleClass="grid">
                <children>
-                  <VBox fx:id="V0" accessibleText="0" onMouseClicked="#getAccessibleText" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
+                  <VBox fx:id="0" onMouseClicked="#getIndiceColonne" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
                      <children>
                         <Circle fx:id="00" fill="WHITE" radius="48.0"/>
                         <Circle fx:id="10" fill="WHITE" radius="48.0"/>
@@ -28,7 +28,7 @@
                         <Circle fx:id="50" fill="WHITE" radius="48.0"/>
                      </children>
                   </VBox>
-                  <VBox fx:id="1" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
+                  <VBox fx:id="1" onMouseClicked="#getIndiceColonne" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
                      <children>
                         <Circle fx:id="01" fill="WHITE" radius="48.0"/>
                         <Circle fx:id="11" fill="WHITE" radius="48.0"/>
@@ -38,7 +38,7 @@
                         <Circle fx:id="51" fill="WHITE" radius="48.0"/>
                      </children>
                   </VBox>
-                  <VBox fx:id="2" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
+                  <VBox fx:id="2" onMouseClicked="#getIndiceColonne" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
                      <children>
                         <Circle fx:id="02" fill="WHITE" radius="48.0"/>
                         <Circle fx:id="12" fill="WHITE" radius="48.0"/>
@@ -48,7 +48,7 @@
                         <Circle fx:id="52" fill="WHITE" radius="48.0"/>
                      </children>
                   </VBox>
-                  <VBox fx:id="3" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
+                  <VBox fx:id="3" onMouseClicked="#getIndiceColonne" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
                      <children>
                         <Circle fx:id="03" fill="WHITE" radius="48.0"/>
                         <Circle fx:id="13" fill="WHITE" radius="48.0"/>
@@ -58,7 +58,7 @@
                         <Circle fx:id="53" fill="WHITE" radius="48.0"/>
                      </children>
                   </VBox>
-                  <VBox fx:id="4" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
+                  <VBox fx:id="4" onMouseClicked="#getIndiceColonne" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
                      <children>
                         <Circle fx:id="04" fill="WHITE" radius="48.0"/>
                         <Circle fx:id="14" fill="WHITE" radius="48.0"/>
@@ -68,7 +68,7 @@
                         <Circle fx:id="54" fill="WHITE" radius="48.0"/>
                      </children>
                   </VBox>
-                  <VBox fx:id="5" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
+                  <VBox fx:id="5" onMouseClicked="#getIndiceColonne" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
                      <children>
                         <Circle fx:id="05" fill="WHITE" radius="48.0"/>
                         <Circle fx:id="15" fill="WHITE" radius="48.0"/>
@@ -78,7 +78,7 @@
                         <Circle fx:id="55" fill="WHITE" radius="48.0"/>
                      </children>
                   </VBox>
-                  <VBox fx:id="6" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
+                  <VBox fx:id="6" onMouseClicked="#getIndiceColonne" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
                      <children>
                         <Circle fx:id="06" fill="WHITE" radius="48.0"/>
                         <Circle fx:id="16" fill="WHITE" radius="48.0"/>

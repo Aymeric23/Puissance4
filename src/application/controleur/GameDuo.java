@@ -15,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
@@ -78,15 +79,19 @@ public class GameDuo {
     }
     
     /** TODO commenter le rôle de cette méthode (SRP)
+     * @param event 
+     * @param a 
      * @return l'indice de la colonne choisie par l'utilisateur
      */
     @FXML
-    public String getAccessibleText() {
-        String texte = V0.getAccessibleText();
-        System.out.println(texte);
+    public String getIndiceColonne(MouseEvent event) {
+        VBox colonne = (VBox) event.getSource();
+        String idColonne = colonne.getId();
+        System.out.println("clic sur la colonne " + idColonne);
 //        return getAccessibleText();
-        return texte; //bouchon
+        return idColonne; //bouchon
     }
+    
     
     /** TODO commenter le rôle de cette méthode (SRP)
      * @param args
@@ -95,7 +100,7 @@ public class GameDuo {
     public static void main(String[] args) throws Exception {
         DateTimeFormatter date = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         Game newGameDuo = new Game(date.format(LocalDateTime.now()), 2);
-        newGameDuo.startGameDuo();
+        newGameDuo.startGame();
     }
 
 }

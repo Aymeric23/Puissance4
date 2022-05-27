@@ -71,6 +71,32 @@ public class Game {
     }
     
     
+    /**
+     * Lancement d'une partie en fonction du gamemode choisi
+     */
+    public void startGame() {
+        switch (gamemode) {
+        case 1: {
+            System.out.println("[Info] - Lancement d'une partie solo");
+            startGameSolo();
+        }
+            break;
+        case 2: {
+            System.out.println("[Info] - Lancement d'une partie duo");
+            startGameDuo();
+        }
+            break;
+        case 3: {
+            System.out.println("[Info] - Lancement d'une partie puzzle");
+            startGamePuzzle();
+        }
+            break;
+        default:
+            throw new IllegalArgumentException("Ce mode de jeu est invalide: " 
+                                               + gamemode);
+        }
+    }
+    
     /** TODO commenter le rôle de cette méthode (SRP)
      * 
      */
@@ -80,10 +106,9 @@ public class Game {
     }
 
     /** TODO commenter le rôle de cette méthode (SRP)
-     * @throws Exception 
-     * 
+     * TODO Exceptions si nécessaire
      */
-    public void startGameDuo() throws Exception {        
+    public void startGameDuo() {        
         Grid grid = new Grid();
         //Scanner entree = new Scanner(System.in); 
         GameDuo controler = new GameDuo();
@@ -116,9 +141,9 @@ public class Game {
         while (!ok) {
 //            grid.showGrid();
 //            System.out.print(joueurActuel.getPseudo() + " colonne : ");
-            colonneChoisie = Integer.valueOf(controler.getAccessibleText());
-            System.out.println(joueurActuel + "  " +joueurAttente + "  " + colonneChoisie);
-            grid.setGrid(joueurActuel, colonneChoisie);
+            //colonneChoisie = Integer.valueOf(controler.getIndiceColonne());
+            //System.out.println(joueurActuel + "  " +joueurAttente + "  " + colonneChoisie);
+            //grid.setGrid(joueurActuel, colonneChoisie);
             
             ok = grid.isAlign(joueurActuel);
             if (grid.isAlign(joueurActuel)) {
@@ -138,7 +163,7 @@ public class Game {
      * 
      */
     public void startGameSolo() {
-        // TODO Auto-generated method stub
+        System.out.println();
         
     }
 }
