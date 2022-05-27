@@ -84,7 +84,6 @@ public class GameDuo {
         VBox colonne = (VBox) event.getSource();
         String idColonne = colonne.getId();
         System.out.println("clic sur la colonne " + idColonne);
-//        return getAccessibleText();
         return idColonne; //bouchon
     }
     
