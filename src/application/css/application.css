@@ -35,10 +35,24 @@
     -fx-font-family: 'Great Vibes';
 }
 
+.game-duo {
+    -fx-background-image: url("../images/background2.jpg");
+}
+
+.grid{
+    -fx-background-color: #2B779F;
+    -fx-background-radius: 15px;
+    -fx-padding: 20.8px;
+    -fx-border: solid black 5px;
+    
+}
+
 .grid-column{
-    -fx-background-color: blue;
+    -fx-spacing: 20.8px;
+    -fx-padding: 10.4px;
 }
 
 .grid-column:hover{
-    -fx-background-color: yellow;
+    -fx-background-color: #8FB8DE;
+    -fx-background-radius: 20px;
 }
