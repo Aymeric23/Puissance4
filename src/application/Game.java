@@ -141,9 +141,9 @@ public class Game {
         while (!ok) {
 //            grid.showGrid();
 //            System.out.print(joueurActuel.getPseudo() + " colonne : ");
-            //colonneChoisie = Integer.valueOf(controler.getIndiceColonne());
-            //System.out.println(joueurActuel + "  " +joueurAttente + "  " + colonneChoisie);
-            //grid.setGrid(joueurActuel, colonneChoisie);
+            colonneChoisie = Integer.valueOf(controler.getIndiceColonne(null));
+            System.out.println(joueurActuel + "  " +joueurAttente + "  " + colonneChoisie);
+            grid.setGrid(joueurActuel, colonneChoisie);
             
             ok = grid.isAlign(joueurActuel);
             if (grid.isAlign(joueurActuel)) {
