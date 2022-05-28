@@ -12,6 +12,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -28,99 +30,57 @@ public class Menu {
     
     @FXML
     VBox box;
-    
-    /**
-     * Change la scene actuelle par la scene qui correspond au mode de jeu solo
-     * @throws IOException 
-     */
-    @FXML
-    private void sceneGameSolo(ActionEvent event) throws IOException {
-        // création d'un chargeur de code FXML
-        FXMLLoader chargeurFXML = new FXMLLoader();
-         
-        // charge le fichier FXML
-        chargeurFXML.setLocation(getClass().getResource("/application/" 
-                    + "fxml/GameSolo.fxml"));
-         
-        racine = chargeurFXML.load();
-        box.getChildren().setAll(racine);
-    }
-    
-    /**
-     * Change la scene actuelle par la scene qui correspond au mode de jeu duo
-     * @throws IOException 
-     */
-    @FXML
-    private void sceneGameDuo(ActionEvent event) throws IOException {
-        // création d'un chargeur de code FXML
-        FXMLLoader chargeurFXML = new FXMLLoader();
-         
-        // charge le fichier FXML
-        chargeurFXML.setLocation(getClass().getResource("/application/"
-                    + "fxml/GameDuo.fxml"));
-         
-        racine = chargeurFXML.load();
-        box.getChildren().setAll(racine);
-    }
-    
+
     /**
      * Change la scene actuelle par la scene qui correspond
-     * au mode de jeu puzzle
      * @throws IOException 
      */
     @FXML
-    private void sceneGamePuzzle(ActionEvent event) throws IOException {
+    private void loadScene(ActionEvent event) throws IOException {
+        String destinationFXML;
+        
         // création d'un chargeur de code FXML
         FXMLLoader chargeurFXML = new FXMLLoader();
-         
-        // charge le fichier FXML
-        chargeurFXML.setLocation(getClass().getResource("/application/"
-                    +"fxml/GamePuzzle.fxml"));
-         
-        racine = chargeurFXML.load();
-        box.getChildren().setAll(racine);
-    }
-    
-    /**
-     * Change la scene actuelle par la scene qui correspond à la liste 
-     * des parties sauvagardées
-     * @throws IOException 
-     */
-    @FXML
-    private void sceneListLoadGame(ActionEvent event) throws IOException {
-        // création d'un chargeur de code FXML
-        FXMLLoader chargeurFXML = new FXMLLoader();
-         
-        // charge le fichier FXML
-        chargeurFXML.setLocation(getClass().getResource("/application/"
-                    +"fxml/ListSaveGame.fxml"));
-         
-        racine = chargeurFXML.load();
-        box.getChildren().setAll(racine);
-    }
-    
-    /**
-     * Change la scene actuelle par la scene qui correspond au règles du jeu
-     * @throws IOException 
-     */
-    @FXML
-    private void sceneRules(ActionEvent event) throws IOException {
-        // création d'un chargeur de code FXML
-        FXMLLoader chargeurFXML = new FXMLLoader();
-         
-        // charge le fichier FXML
-        chargeurFXML.setLocation(getClass().getResource("/application/"
-                    +"fxml/Rules.fxml"));
-         
-        racine = chargeurFXML.load();
-        box.getChildren().setAll(racine);
+        //Récupère le boutton sur lequel le joueur clic
+        Button bouton = (Button) event.getSource();
+        String IdBouton = bouton.getId();
+        
+        //Charge le fichier en question
+        switch (IdBouton) {
+            case "solo":
+                destinationFXML = "/application/fxml/GameSolo.fxml";
+                break;
+            case "duo":
+                destinationFXML = "/application/fxml/GameDuo.fxml";
+                break;
+            case "puzzle":
+                destinationFXML = "/application/fxml/GamePuzzle.fxml";
+                break;
+            case "load":
+                destinationFXML = "/application/fxml/ListSaveGame.fxml";
+                break;
+            case "exit":
+                destinationFXML = null;
+                break;   
+            default:
+                throw new IllegalArgumentException("Id bouton invalide : " + IdBouton);
+        }
+        if (destinationFXML.isEmpty() || destinationFXML == null) {
+            exitApp();
+        } else {
+            // charge le fichier FXML
+            chargeurFXML.setLocation(getClass().getResource(destinationFXML));
+             
+            racine = chargeurFXML.load();
+            box.getChildren().setAll(racine);
+        }
     }
     
     /**
      * Ferme la fenêtre de jeu
      */
     @FXML
-    private void leaveGame() {
+    private void exitApp() {
         Platform.exit();
     }
 }
