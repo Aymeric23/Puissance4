@@ -17,6 +17,8 @@ public class Player {
     /** couleur de ce joueur */
     private String color;
     
+    private final String[] colorHexa = {"#e45555", "#fbfd87"};
+    
     /**
      * Définition des caractéristiques du joueur
      * @param pseudo   pseudonyme du joueur 

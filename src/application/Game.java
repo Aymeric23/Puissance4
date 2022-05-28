@@ -27,6 +27,9 @@ public class Game {
     /** mode de jeu de cette partie */
     private int gamemode;
     
+    /** mode de jeu de cette partie */
+    private Grid grid = new Grid();
+    
     /**
      * Définition des caractéristiques de la partie
      * @param name nom de la partie, correspond à la date et l'heure du jour 
@@ -53,6 +56,13 @@ public class Game {
      */
     public int getGamemode() {
         return gamemode;
+    }
+    
+    /**
+     * @return la grille
+     */
+    public Grid getGrid() {
+        return grid;
     }
     
     
@@ -102,7 +112,6 @@ public class Game {
      * 
      */
     public void startGamePuzzle() {
-        Grid grid = new Grid();
         
     }
 
@@ -110,7 +119,6 @@ public class Game {
      * TODO Exceptions si nécessaire
      */
     public void startGameDuo() {        
-        Grid grid = new Grid();
         GameDuo controler = new GameDuo();
         Player j1 = new Player(controler.getPseudoP1(),null);
         Player j2 = new Player(controler.getPseudoP2(),null);
@@ -161,7 +169,6 @@ public class Game {
      * 
      */
     public void startGameSolo() {
-        Grid grid = new Grid();
         GameSolo controler = new GameSolo();
         Player j1 = new Player(controler.getPseudoP1(),null);
         Player j2 = new Player("IA", null);

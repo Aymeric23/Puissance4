@@ -36,10 +36,10 @@ public class Grid {
         currentLine = 0;
         currentColumn = 0;
 
-        /* Initialisation de la grille avec des "O" */
+        /* Initialisation de la grille avec des "0" */
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
-                grid[i][j] = "O";
+                grid[i][j] = "0";
             }
         }
     }
@@ -62,7 +62,7 @@ public class Grid {
         boolean ok = false;
 
         for (int i = grid.length - 1; !ok && i >= 0; i--) {
-            if (grid[i][column] == "O") {
+            if (grid[i][column] == "0") {
                 grid[i][column] = player.getColor();
                 ok = true;
                 setCurrentLine(i);
@@ -322,7 +322,7 @@ public class Grid {
                 if (line == grid.length-1) {
                     grid[line][j] = ""+randomNumber;
                 } else {
-                    if(!grid[line+1][j].equals("0") && !grid[line+1][j].equals("O")) {
+                    if(!grid[line+1][j].equals("0") && !grid[line+1][j].equals("0")) {
                         grid[line][j] = ""+randomNumber;
                     }
                 }
@@ -330,6 +330,19 @@ public class Grid {
             }
         }
         grid[0][0] = "x";
+    }
+    
+    
+    /** TODO commenter le rôle de cette méthode (SRP)
+     * @param indice de la colone
+     * @return true si colone pleine false sinon
+     */
+    public boolean isColumnFull(int indice) {
+        boolean isFull = true;
+        if (grid[0][indice] == "0") {
+            isFull = false;
+        }
+        return isFull;
     }
     
     /**
