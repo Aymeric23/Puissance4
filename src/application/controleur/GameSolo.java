@@ -42,7 +42,7 @@ public class GameSolo {
     /** TODO commenter le rôle de ce champ (attribut, rôle associatif) */
     public static DateTimeFormatter date = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
     /** TODO commenter le rôle de ce champ (attribut, rôle associatif) */
-    public static Game GameSolo = new Game(date.format(LocalDateTime.now()), 2);
+    public static Game gameSolo = new Game(date.format(LocalDateTime.now()), 1);
     
     /**
      * Change la scene actuelle par la scene qui correspond au menu
@@ -88,13 +88,13 @@ public class GameSolo {
      * @return l'indice de la colonne choisie par l'utilisateur
      */
     @FXML
-    public int getIndiceColonne(MouseEvent event) {
+    public int getIndiceColone(MouseEvent event) {
         VBox colone = (VBox) event.getSource();
         int idColone = Integer.parseInt(colone.getId());
         
         System.out.println("clic sur la colonne " + idColone);
         
-        System.out.println("est full? " + GameSolo.getGrid().isColumnFull(idColone));
+        System.out.println("est full? " + gameSolo.getGrid().isColumnFull(idColone));
         return idColone; //bouchon
     }
     
@@ -104,7 +104,7 @@ public class GameSolo {
      * @throws Exception
      */
     public static void main(String[] args) {
-        GameSolo.startGame();
+        //gameSolo.startGame();
     }
 
 }

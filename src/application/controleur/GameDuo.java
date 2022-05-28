@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import application.Game;
+import application.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +19,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 
 /**
@@ -36,6 +39,17 @@ public class GameDuo {
     private TextField pseudoP1;
     @FXML
     private TextField pseudoP2;
+    
+    @FXML
+    private Circle c00;
+    
+    @FXML
+    private HBox grille;
+    
+    /** TODO commenter le rôle de ce champ (attribut, rôle associatif) */
+    public static DateTimeFormatter date = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+    /** TODO commenter le rôle de ce champ (attribut, rôle associatif) */
+    public static Game partie = new Game(date.format(LocalDateTime.now()), 2);
     
     /**
      * Change la scene actuelle par la scene qui correspond au menu
@@ -75,27 +89,35 @@ public class GameDuo {
     }
     
     /** TODO commenter le rôle de cette méthode (SRP)
+     * @param id
+     * @param color 
+     */
+    public void setCircleColor(String id, String color) {
+        System.out.println("looking for " + id);
+        ((Shape) grille.lookup("#"+id)).setFill(Paint.valueOf(color));
+    }
+    
+    /** TODO commenter le rôle de cette méthode (SRP)
      * @param event 
      * @param a 
-     * @return l'indice de la colonne choisie par l'utilisateur
      */
     @FXML
-    public String getIndiceColonne(MouseEvent event) {
-        VBox colonne = (VBox) event.getSource();
-        String idColonne = colonne.getId();
-        System.out.println("clic sur la colonne " + idColonne);
-        return idColonne; //bouchon
+    public void getIndiceColone(MouseEvent event) {
+        VBox colone = (VBox) event.getSource();
+        int idColone = Integer.parseInt(colone.getId());
+        int[] a = partie.addJeton(idColone, partie.getJ1());
+        setCircleColor(""+a[1]+a[0], partie.getJ1().getColorHexa());
     }
     
     
     /** TODO commenter le rôle de cette méthode (SRP)
-     * @param args
-     * @throws Exception
+     * 
      */
-    public static void main(String[] args) throws Exception {
-        DateTimeFormatter date = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-        Game newGameDuo = new Game(date.format(LocalDateTime.now()), 2);
-        newGameDuo.startGame();
+    @FXML
+    public void runTheGame() {
+        Player j1 = new Player(getPseudoP1(), 1);
+        Player j2 = new Player(getPseudoP2(), 2);
+        partie.startGame(j1, j2);
     }
-
+    
 }

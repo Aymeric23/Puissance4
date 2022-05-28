@@ -17,15 +17,22 @@ public class Player {
     /** couleur de ce joueur */
     private Color color;
     
+    private int prefix;
+    
     
     /**
      * Définition des caractéristiques du joueur
      * @param pseudo   pseudonyme du joueur 
+     * @param prefix   1 si joueur1 2 si joueur2 
      * @param color    couleur du joueur ("R" pour rouge, "J" pour jaune) 
      */
-    public Player(String pseudo, Color color) {
+    public Player(String pseudo, int prefix) {
         this.pseudo = pseudo;
-        this.color = color;
+        
+        if(prefix > 2 || prefix < 1) {
+            throw new IllegalArgumentException("Prefix Joueur invalide");
+        }
+        this.prefix = prefix;
     }
     
     /**
@@ -53,8 +60,16 @@ public class Player {
     /**
      * @return la couleur du joueur
      */
-    public Color getColorHexa() {
-        return color;
+    public String getColorHexa() {
+        return color.getColorHexa();
+    }
+    
+    
+    /**
+     * @return the prefix
+     */
+    public int getPrefix() {
+        return prefix;
     }
     
 }

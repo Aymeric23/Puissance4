@@ -10,44 +10,43 @@ package application;
  */
 public class Color {
 
-    private String colorName;
+    private int colorId;
     private String colorHexa;
     
-    private final String[] VALID_COLOR_NAME = {"R", "J"};
+    private final int[] VALID_COLOR_ID = {1, 2};
     private final String[] VALID_COLOR_HEXA = {"#e45555", "#fbfd87"};
 
     /**
      * TODO commenter l'état initial atteint
-     * @param colorName
+     * @param colorId
      * @param colorHexa 
-     * @throws IllegalArgumentException si colorName invalide
+     * @throws IllegalArgumentException si colorId invalide
      */
-    public Color(String colorName, String colorHexa) {
-        if (!isValidColor()) {
+    public Color(int colorId, String colorHexa) {
+        if (!isValidColor(colorId)) {
             throw new IllegalArgumentException("Couleur invalide");
         }
-        if (!isValidColorHexa()) {
+        this.colorId = colorId;
+        if (!isValidColorHexa(colorHexa)) {
             throw new IllegalArgumentException("CouleurHexa invalide");
         }
-        
-        this.colorName = colorName;
         this.colorHexa = colorHexa;
     }
 
-    private boolean isValidColor() {
+    private boolean isValidColor(int colorId) {
         boolean colorOk = false;
-        for (String element : VALID_COLOR_NAME) {
-            if (colorName == element) {
+        for (int element : VALID_COLOR_ID) {
+            if (colorId == element) {
                 colorOk = true;
             }
         }
         return colorOk;
     }
     
-    private boolean isValidColorHexa() {
+    private boolean isValidColorHexa(String colorHexa) {
         boolean colorHexaOk = false;
         for (String element : VALID_COLOR_HEXA) {
-            if (colorHexa == element) {
+            if (colorHexa.equals(element)) {
                 colorHexaOk = true;
             }
         }
@@ -56,10 +55,10 @@ public class Color {
     
     
     /**
-     * @return the colorName
+     * @return the colorId
      */
-    public String getColorName() {
-        return colorName;
+    public int getColorId() {
+        return colorId;
     }
     
     /**

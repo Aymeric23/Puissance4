@@ -25,8 +25,8 @@ public class Puissance4 extends Application {
         // charge le fichier FXML
         chargeurFXML.setLocation(getClass().getResource("/application/fxml/Menu.fxml"));
 
-        Parent root = chargeurFXML.load();
-        Scene scene = new Scene(root);
+        Parent racine = chargeurFXML.load();
+        Scene scene = new Scene(racine);
         scene.getStylesheets().add(getClass().getResource("/application/css/application.css").toExternalForm());
 
         // définition des caractéristiques de la fenêtre
