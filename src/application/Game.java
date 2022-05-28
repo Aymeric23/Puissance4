@@ -122,6 +122,8 @@ public class Game {
         GameDuo controler = new GameDuo();
         Player j1 = new Player(controler.getPseudoP1(),null);
         Player j2 = new Player(controler.getPseudoP2(),null);
+        Color c1 = new Color("R", "#e45555");
+        Color c2 = new Color("J", "#fbfd87");
         
         Player joueurActuel = j1;
         Player joueurAttente = j2;
@@ -130,13 +132,13 @@ public class Game {
         Random aleatoire = new Random();
         boolean couleur = aleatoire.nextBoolean();
         if (couleur) {
-            j1.setColor("R");
-            j2.setColor("J");
+            j1.setColor(c1);
+            j2.setColor(c2);
             joueurActuel = j1;
             joueurAttente = j2;
         } else {
-            j1.setColor("J");
-            j2.setColor("R");
+            j1.setColor(c1);
+            j2.setColor(c2);
             joueurActuel = j2;
             joueurAttente = j1;
         }  

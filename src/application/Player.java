@@ -15,16 +15,15 @@ public class Player {
     private String pseudo;
     
     /** couleur de ce joueur */
-    private String color;
+    private Color color;
     
-    private final String[] colorHexa = {"#e45555", "#fbfd87"};
     
     /**
      * Définition des caractéristiques du joueur
      * @param pseudo   pseudonyme du joueur 
      * @param color    couleur du joueur ("R" pour rouge, "J" pour jaune) 
      */
-    public Player(String pseudo, String color) {
+    public Player(String pseudo, Color color) {
         this.pseudo = pseudo;
         this.color = color;
     }
@@ -33,7 +32,7 @@ public class Player {
      * Modifie la couleur du joueur
      * @param nouvelleCouleur  nouvelle couleur du joueur
      */
-    public void setColor(String nouvelleCouleur) {
+    public void setColor(Color nouvelleCouleur) {
         this.color = nouvelleCouleur;
     }
     
@@ -47,7 +46,14 @@ public class Player {
     /**
      * @return la couleur du joueur
      */
-    public String getColor() {
+    public Color getColor() {
+        return color;
+    }
+    
+    /**
+     * @return la couleur du joueur
+     */
+    public Color getColorHexa() {
         return color;
     }
     

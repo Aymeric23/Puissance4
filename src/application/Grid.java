@@ -63,7 +63,7 @@ public class Grid {
 
         for (int i = grid.length - 1; !ok && i >= 0; i--) {
             if (grid[i][column] == "0") {
-                grid[i][column] = player.getColor();
+                grid[i][column] = player.getColor().getColorName();
                 ok = true;
                 setCurrentLine(i);
                 setCurrentColumn(column);
@@ -121,7 +121,7 @@ public class Grid {
         int count = 0;
 
         for (int i = currentLine, j = currentColumn; ok && i < 5 && j > 0 && count <= 4; i++, j--) {
-            if (grid[i+1][j-1] == joueur.getColor()) {
+            if (grid[i+1][j-1] == joueur.getColor().getColorName()) {
                 ok = true;
                 count++;
             } else {
@@ -143,7 +143,7 @@ public class Grid {
         int count = 0;
 
         for (int i = currentLine, j = currentColumn; ok && i > 0 && j < 6 && count <= 4; i--, j++) {
-            if (grid[i-1][j+1] == joueur.getColor()) {
+            if (grid[i-1][j+1] == joueur.getColor().getColorName()) {
                 ok = true;
                 count++;
             } else {
@@ -165,7 +165,7 @@ public class Grid {
         int count = 0;
 
         for (int i = currentLine, j = currentColumn; ok && i < 5 && j < 6 && count <= 4; i++, j++) {
-            if (grid[i+1][j+1] == joueur.getColor()) {
+            if (grid[i+1][j+1] == joueur.getColor().getColorName()) {
                 ok = true;
                 count++;
             } else {
@@ -188,7 +188,7 @@ public class Grid {
         int count = 0;
 
         for (int i = currentLine, j = currentColumn; ok && i > 0 && j > 0 && count <= 4; i--, j--) {
-            if (grid[i-1][j-1] == joueur.getColor()) {
+            if (grid[i-1][j-1] == joueur.getColor().getColorName()) {
                 ok = true;
                 count++;
             } else {
@@ -224,7 +224,7 @@ public class Grid {
         int count = 0;
 
         for (int j = currentColumn; ok && j < 6 && count <= 4; j++) {
-            if (grid[currentLine][j+1] == joueur.getColor()) {
+            if (grid[currentLine][j+1] == joueur.getColor().getColorName()) {
                 ok = true;
                 count++;
             } else {
@@ -246,7 +246,7 @@ public class Grid {
         int count = 0;
 
         for (int j = currentColumn; ok && j > 0 && count <= 4; j--) {
-            if (grid[currentLine][j-1] == joueur.getColor()) {
+            if (grid[currentLine][j-1] == joueur.getColor().getColorName()) {
                 ok = true;
                 count++;
             } else {
@@ -282,7 +282,7 @@ public class Grid {
         int count = 0;
 
         for (int i = currentLine; ok && i < 5; i++) {
-            if (grid[i+1][currentColumn] == joueur.getColor()) {
+            if (grid[i+1][currentColumn] == joueur.getColor().getColorName()) {
                 ok = true;
                 count++;
             } else {
