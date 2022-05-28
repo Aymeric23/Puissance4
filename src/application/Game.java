@@ -9,6 +9,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import application.controleur.GameDuo;
+import application.controleur.GameSolo;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -110,11 +111,8 @@ public class Game {
      */
     public void startGameDuo() {        
         Grid grid = new Grid();
-        //Scanner entree = new Scanner(System.in); 
         GameDuo controler = new GameDuo();
-        //System.out.print("Entrez votre pseudo : ");
         Player j1 = new Player(controler.getPseudoP1(),null);
-//        System.out.print("Entrez votre pseudo : ");
         Player j2 = new Player(controler.getPseudoP2(),null);
         
         Player joueurActuel = j1;
@@ -163,7 +161,10 @@ public class Game {
      * 
      */
     public void startGameSolo() {
-        System.out.println();
+        Grid grid = new Grid();
+        GameSolo controler = new GameSolo();
+        Player j1 = new Player(controler.getPseudoP1(),null);
+        Player j2 = new Player("IA", null);
         
     }
 }

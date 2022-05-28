@@ -43,7 +43,7 @@ public class GameDuo {
      * @throws IOException 
      */
     @FXML
-    private void sceneMenu(ActionEvent event) throws IOException {
+    private void sceneMenu(MouseEvent event) throws IOException {
         // création d'un chargeur de code FXML
         FXMLLoader chargeurFXML = new FXMLLoader();
          

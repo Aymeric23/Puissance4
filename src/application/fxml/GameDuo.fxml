@@ -100,7 +100,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" text="Retour au Menu"/>
+            <Button mnemonicParsing="false" text="Retour au Menu" onMouseClicked="#sceneMenu"/>
             <Button mnemonicParsing="false" text="Lancer la partie" />
          </children>
       </HBox>

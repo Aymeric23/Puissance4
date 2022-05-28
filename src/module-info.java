@@ -2,7 +2,7 @@
  * @author Romain
  *
  */
-module p4 {
+module puissance4 {
 	requires javafx.controls;
         requires javafx.graphics;
         requires javafx.fxml;
