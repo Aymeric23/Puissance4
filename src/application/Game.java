@@ -24,8 +24,14 @@ public class Game {
     /** mode de jeu de cette partie */
     private Grid grid = new Grid();
     
-    private Player j1;
-    private Player j2;
+    private Player player1;
+    private Player player2;
+    
+    /**Joueur qui joue actuellement**/
+    private Player playerPlaying;
+    
+    /** Joueur vainqueur **/
+    private Player winner;
     
     /**
      * Définition des caractéristiques de la partie
@@ -38,7 +44,6 @@ public class Game {
     public Game(String name, int gamemode) {
         this.name = name;
         this.gamemode = gamemode;
-        this.grid = new Grid();
     }
     
     /**
@@ -63,12 +68,68 @@ public class Game {
         return grid;
     }
     
+    /**
+     * @return player1
+     */
+    public Player getPlayer1() {
+        return player1;
+    }
+    
+    /**
+     * @return player2
+     */
+    public Player getPlayer2() {
+        return player2;
+    }
+    
+    /**
+     * @return the playerPlaying
+     */
+    public Player getPlayerPlaying() {
+        return playerPlaying;
+    }
+    
+    /**
+     * @return the winner
+     */
+    public Player getWinner() {
+        return winner;
+    }
+    
     
     /**
      * @param name
      */
     public void setName(String name) {
         this.name = name;
+    }
+    
+    /**
+     * @param player1 the player1 to set
+     */
+    public void setPlayer1(Player player1) {
+        this.player1 = player1;
+    }
+    
+    /**
+     * @param player2 the player2 to set
+     */
+    public void setPlayer2(Player player2) {
+        this.player2 = player2;
+    }
+    
+    /**
+     * @param playerPlaying the playerPlaying to set
+     */
+    public void setPlayerPlaying(Player playerPlaying) {
+        this.playerPlaying = playerPlaying;
+    }
+    
+    /**
+     * @param winner the winner to set
+     */
+    public void setWinner(Player winner) {
+        this.winner = winner;
     }
     
     
@@ -82,10 +143,10 @@ public class Game {
     
     /**
      * Lancement d'une partie en fonction du gamemode choisi
-     * @param j1 
-     * @param j2 
+     * @param player1 
+     * @param player2 
      */
-    public void startGame(Player j1, Player j2) {
+    public void startGame() {
         switch (gamemode) {
         case 1: {
             System.out.println("[Info] - Lancement d'une partie solo");
@@ -94,8 +155,8 @@ public class Game {
             break;
         case 2: {
             System.out.println("[Info] - Lancement d'une partie duo \n"
-                               + "Joueur 1 : " + j1.getPseudo() + " | Joueur 2 : " + j2.getPseudo());
-            startGameDuoBis(j1, j2);
+                               + "Joueur 1 : " + player1.getPseudo() + " | Joueur 2 : " + player2.getPseudo());
+            startGameDuo();
         }
             break;
         case 3: {
@@ -120,118 +181,14 @@ public class Game {
     
     /** TODO commenter le rôle de cette méthode (SRP)
      * TODO Exceptions si nécessaire
-     * @param j1 
-     * @param j2 
+     * @param player1 
+     * @param player2 
      */
-    public void startGameDuoBis(Player j1, Player j2) {    
+    public void startGameDuo() {    
         /*Affectation des couleurs aléatoirement*/
-        randomizePlayerColor(j1, j2);
-        this.j1 = j1;
-        this.j2 = j2;
-        System.out.println("Couleur J1 : " + j1.getColor().getColorId());
-        System.out.println("Couleur J2 : " + j2.getColor().getColorId());
+        System.out.println("Couleur player1 : " + player1.getColor().getColorId());
+        System.out.println("Couleur player2 : " + player2.getColor().getColorId());
         grid.showGrid();
-        
-        
-
-    }
-    
-    
-
-    
-    /** 
-     * Affecte une couleur aux 2 joueurs de façon aléatoire
-     * @param j1 Joueur1
-     * @param j2 Joueur2
-     */
-    private static void randomizePlayerColor(Player j1, Player j2) {
-        Color c1 = new Color(1, "#e45555");
-        Color c2 = new Color(2, "#fbfd87");
-        
-        Color couleurs[] = {c1, c2, c1};
-        
-        Random aleatoire = new Random();
-        int numCouleur = aleatoire.nextInt(2); // 0 ou 1
-        j1.setColor(couleurs[numCouleur]);
-        j2.setColor(couleurs[numCouleur+1]);
-    }
-    
-    /** TODO commenter le rôle de cette méthode (SRP)
-     * @param colone à modifier
-     * @param player 
-     * @return 
-     * 
-     */
-    public int[] addJeton(int colone, Player player) {
-        System.out.println("ok");
-        return grid.placeJeton(colone, player);
-        
-    }
-    
-    /**
-     * @return J1
-     */
-    public Player getJ1() {
-        return j1;
-    }
-    
-    /**
-     * @return J2
-     */
-    public Player getJ2() {
-        return j2;
-    }
-    
-
-    /** TODO commenter le rôle de cette méthode (SRP)
-     * TODO Exceptions si nécessaire
-     * @param j1 
-     * @param j2 
-     */
-    public void startGameDuo(Player j1, Player j2) {        
-        //Color c1 = new Color("R", "#e45555");
-        //Color c2 = new Color("J", "#fbfd87");
-        
-        Player joueurActuel = j1;
-        Player joueurAttente = j2;
-        Player joueurTemporaire;
-        
-        Random aleatoire = new Random();
-        boolean couleur = aleatoire.nextBoolean();
-        if (couleur) {
-            //j1.setColor(c1);
-            //j2.setColor(c2);
-            joueurActuel = j1;
-            joueurAttente = j2;
-        } else {
-            //j1.setColor(c1);
-            //j2.setColor(c2);
-            joueurActuel = j2;
-            joueurAttente = j1;
-        }  
-        
-        String vainqueur = "Egalité";
-        int colonneChoisie;
-        boolean ok = false;
-        while (!ok) {
-//            grid.showGrid();
-//            System.out.print(joueurActuel.getPseudo() + " colonne : ");
-            //colonneChoisie = Integer.valueOf(controler.getIndiceColone(null));
-            //System.out.println(joueurActuel + "  " +joueurAttente + "  " + colonneChoisie);
-            //grid.setGrid(joueurActuel, colonneChoisie);
-            
-            ok = grid.isAlign(joueurActuel);
-            if (grid.isAlign(joueurActuel)) {
-                grid.showGrid();
-                vainqueur = "Le vainqueur est " + joueurActuel.getPseudo();
-            }
-            
-            joueurTemporaire = joueurAttente;
-            joueurAttente = joueurActuel;
-            joueurActuel = joueurTemporaire;
-        }
-        
-        System.out.println("Le vainqueur est : " + vainqueur);
     }
 
     /** TODO commenter le rôle de cette méthode (SRP)
@@ -239,8 +196,23 @@ public class Game {
      */
     public void startGameSolo() {
         GameSolo controler = new GameSolo();
-        //Player j1 = new Player(controler.getPseudoP1(),null);
-        //Player j2 = new Player("IA", null);
+        //Player player1 = new Player(controler.getPseudoP1(),null);
+        //Player player2 = new Player("IA", null);
         
+    }
+    
+    /** 
+     * Donne la main au joueur en attente
+     * @param partie
+     */
+    public void switchPlayingPlayer() {
+        /*Si le joueur qui vient de jouer est le joueur 1*/
+        if (getPlayerPlaying() == getPlayer1()) {
+            /* Donne la main au joueur 2 */
+            setPlayerPlaying(getPlayer2());
+        } else {
+            /* Donne la main au joueur 1 */
+            setPlayerPlaying(getPlayer1());
+        }
     }
 }

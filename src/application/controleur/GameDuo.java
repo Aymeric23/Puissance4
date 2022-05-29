@@ -6,10 +6,12 @@ package application.controleur;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Random;
 
+import application.Color;
 import application.Game;
+import application.Grid;
 import application.Player;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -39,15 +41,13 @@ public class GameDuo {
     private TextField pseudoP1;
     @FXML
     private TextField pseudoP2;
-    
-    @FXML
-    private Circle c00;
-    
+
     @FXML
     private HBox grille;
     
     /** TODO commenter le rôle de ce champ (attribut, rôle associatif) */
     public static DateTimeFormatter date = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+    
     /** TODO commenter le rôle de ce champ (attribut, rôle associatif) */
     public static Game partie = new Game(date.format(LocalDateTime.now()), 2);
     
@@ -88,36 +88,94 @@ public class GameDuo {
         return pseudoP2.getText();
     }
     
-    /** TODO commenter le rôle de cette méthode (SRP)
-     * @param id
-     * @param color 
-     */
-    public void setCircleColor(String id, String color) {
-        System.out.println("looking for " + id);
-        ((Shape) grille.lookup("#"+id)).setFill(Paint.valueOf(color));
-    }
-    
-    /** TODO commenter le rôle de cette méthode (SRP)
-     * @param event 
-     * @param a 
-     */
-    @FXML
-    public void getIndiceColone(MouseEvent event) {
-        VBox colone = (VBox) event.getSource();
-        int idColone = Integer.parseInt(colone.getId());
-        int[] a = partie.addJeton(idColone, partie.getJ1());
-        setCircleColor(""+a[1]+a[0], partie.getJ1().getColorHexa());
-    }
-    
-    
-    /** TODO commenter le rôle de cette méthode (SRP)
-     * 
+    /**
+     * Lancement du jeu duo
      */
     @FXML
     public void runTheGame() {
         Player j1 = new Player(getPseudoP1(), 1);
         Player j2 = new Player(getPseudoP2(), 2);
-        partie.startGame(j1, j2);
+        /*Affecte une couleur de manière aléatoire*/
+        randomizePlayerColor(j1, j2);
+        partie.setPlayer1(j1);
+        partie.setPlayer2(j2);
+        partie.setPlayerPlaying(j1);
+        
+        /* lancement de la partie */
+        partie.startGame();      
     }
     
+    
+    /** 
+     * Affecte une couleur aux 2 joueurs de façon aléatoire
+     * @param Player1 Joueur1
+     * @param Player2 Joueur2
+     */
+    private static void randomizePlayerColor(Player player1, Player player2) {
+        Color c1 = new Color(1, "#e45555");
+        Color c2 = new Color(2, "#fbfd87");
+        
+        Color couleurs[] = {c1, c2, c1};
+        
+        Random aleatoire = new Random();
+        int numCouleur = aleatoire.nextInt(2); // 0 ou 1
+        player1.setColor(couleurs[numCouleur]);
+        player2.setColor(couleurs[numCouleur+1]);
+    }
+    
+    /** 
+     * Se déclenche lorsque le joueur clic sur une colone
+     * @param event 
+     * @param a 
+     */
+    @FXML
+    private void clickingOnColone(MouseEvent event) {
+        /* Récupère l'id de la colone cliquée */
+        VBox idColone = (VBox) event.getSource();
+        /* Récupère l'id sous forme de String et le converti en int*/
+        int idColoneInt = Integer.parseInt(idColone.getId());
+        
+        if (!partie.getGrid().isFullColumn(idColoneInt)) {
+            /*Recherche une case vide*/
+            partie.getGrid().getEmptyCaseFromColumn(idColoneInt);
+            int x = partie.getGrid().getCurrentColumn();
+            int y = partie.getGrid().getCurrentLine();
+            addJeton(x, y, partie.getPlayerPlaying());
+            
+            if (partie.getGrid().isAlign(partie.getPlayerPlaying())) {
+                System.out.println("winner");
+                System.out.println("winner");
+                System.out.println("winner");
+                System.out.println("winner");
+                System.out.println("winner");
+                System.out.println("winner");
+                
+            }
+            partie.switchPlayingPlayer();
+         }
+    }
+   
+
+    
+    /** TODO commenter le rôle de cette méthode (SRP)
+     * @param x 
+     * @param y 
+     * @param colone à modifier
+     * @param player 
+     * 
+     */
+    public void addJeton(int x, int y, Player player) {
+        partie.getGrid().setCase(y, x, player);
+        setCircleColor(""+ x + y, player.getColor().getColorHexa());
+    }
+    
+    
+    /** TODO commenter le rôle de cette méthode (SRP)
+     * @param id
+     * @param color 
+     */
+     private void setCircleColor(String id, String color) {
+        System.out.println("looking for " + id);
+        ((Shape) grille.lookup("#"+id)).setFill(Paint.valueOf(color));
+    }
 }

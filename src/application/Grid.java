@@ -81,6 +81,35 @@ public class Grid {
         }
         return ok;
     }
+    
+
+    /** TODO commenter le rôle de cette méthode (SRP)
+     * @param x 
+     * @param y 
+     * @param joueur
+     * @return TODO
+     */
+    public boolean isAlignHorrizontallyBis(int x, int y, Player joueur) {
+        int count = 0;
+        boolean ok = true;
+        for(int i = x ; i<grid.length && ok; i++) {
+            if(grid[y][i] == joueur.getColor().getColorId()) {
+                count ++;
+            } else {
+                ok = false;
+            }
+        }
+        ok = true;
+        for(int i = x ; i>0 && ok; i--) {
+            if(grid[y][i] == joueur.getColor().getColorId()) {
+                count ++;
+            } else {
+                ok = false;
+            }
+        }
+        System.out.println(count);
+        return count-1>=4;
+    }
 
     /**
      * Vérifie l'alignement diagonal de quatre jetons de la couleur d'un joueur
@@ -301,58 +330,20 @@ public class Grid {
         this.currentColumn= currentColumn;
     }
 
+    /**
+     * @return the currentLine
+     */
+    public int getCurrentLine() {
+        return currentLine;
+    }
+    
+    /**
+     * @return the currentColumn
+     */
+    public int getCurrentColumn() {
+        return currentColumn;
+    }
 
-//    /** TODO commenter le rôle de cette méthode (SRP)
-//     * @param j1
-//     * @param j2
-//     */
-//    public void randomGeneration(Player j1, Player j2) {
-//        for (int line = grid.length-1 ; line >= 0 ;line--) {
-//            for (int j = grid[line].length-1 ; j >= 0 ; j--) {
-//                int randomNumber = generateNumber(3);
-//                
-//                /*Si génération su la première ligne (en bas)*/
-//                if (line == grid.length-1) {
-//                    grid[line][j] = ""+randomNumber;
-//                } else {
-//                    if(!grid[line+1][j].equals(0) && !grid[line+1][j].equals(0)) {
-//                        grid[line][j] = ""+randomNumber;
-//                    }
-//                }
-//                showGrid();
-//            }
-//        }
-//        grid[0][0] = "x";
-//    }
-    
-    
-    /** TODO commenter le rôle de cette méthode (SRP)
-     * @param indice de la colone
-     * @return true si colone pleine false sinon
-     */
-    public boolean isColumnFull(int indice) {
-        return grid[0][indice] != 0;
-    }
-    
-    
-    /** TODO commenter le rôle de cette méthode (SRP)
-     * @param colone
-     * @param player 
-     * @return TODO
-     */
-    public int[] placeJeton(int colone, Player player) {
-        if(isColumnFull(colone)) {
-            throw new IllegalArgumentException("Cette colone est pleine");
-        }
-        for (int i = grid.length-1 ; i >= 0; i--) {
-            if (isEmptyZone(i, colone)) {
-                setZone(i, colone, player);
-                int[] test = {i, colone};
-                return test;
-            } 
-        }
-        return null;
-    }
     
     /** TODO commenter le rôle de cette méthode (SRP)
      * @param x
@@ -360,27 +351,48 @@ public class Grid {
      * @param player 
      * @param value 
      */
-    public void setZone(int x, int y, Player player) {
-        grid[x][y] = player.getPrefix();
+    public void setCase(int x, int y, Player player) {
+        grid[x][y] = player.getColor().getColorId();
+        setCurrentLine(x);
+        setCurrentColumn(y);
         System.out.println("affichage grille");
         showGrid();
     }
     
-    /** TODO commenter le rôle de cette méthode (SRP)
+    
+    /** Recherche la case vide la plus basse de la colone
+     * @param colone de recherche
+     */
+    public void getEmptyCaseFromColumn(int colone) {
+        boolean found = false;
+        
+        for (int ligne = grid.length-1 ; ligne >= 0 && !found; ligne--) {
+            if (isEmptyCase(ligne, colone)) {
+                found = true;
+                setCurrentLine(ligne);
+                setCurrentColumn(colone);
+            }
+        }
+    }
+    
+    
+    /** 
+     * Verifie si la colone est pleine ou non  
+     * @param indice de la colone
+     * @return true si colone pleine false sinon
+     */
+    public boolean isFullColumn(int indice) {
+        return grid[0][indice] != 0;
+    }
+    
+    /** 
+     * Verifie si la case[x][y] est vide == "0"
      * @param x
      * @param y
      * @return true si vide false sinon
      */
-    public static boolean isEmptyZone(int x, int y) {
+    public boolean isEmptyCase(int x, int y) {
         return grid[x][y] == 0;
-    }
-    
-    /**
-     * @param n 
-     * @return un nombre aléatoire entre 0 et n-1
-     */
-    private int generateNumber(int n) {
-        return new Random().nextInt(n);
     }
 
 

@@ -67,7 +67,9 @@ public class Color {
     public String getColorHexa() {
         return colorHexa;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "Color [colorId=" + colorId + ", colorHexa=" + colorHexa + "]";
+    }
 }

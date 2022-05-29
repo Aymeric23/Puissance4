@@ -56,14 +56,7 @@ public class Player {
     public Color getColor() {
         return color;
     }
-    
-    /**
-     * @return la couleur du joueur
-     */
-    public String getColorHexa() {
-        return color.getColorHexa();
-    }
-    
+   
     
     /**
      * @return the prefix
@@ -71,5 +64,10 @@ public class Player {
     public int getPrefix() {
         return prefix;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Player [pseudo=" + pseudo + ", color=" + color.toString() + ", prefix="
+                        + prefix + "]";
+    }
 }
