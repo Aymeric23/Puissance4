@@ -188,6 +188,7 @@ public class Game {
         /*Affectation des couleurs aléatoirement*/
         System.out.println("Couleur player1 : " + player1.getColor().getColorId());
         System.out.println("Couleur player2 : " + player2.getColor().getColorId());
+        grid = new Grid();
         grid.showGrid();
     }
 

@@ -24,7 +24,6 @@ public class Player {
      * Définition des caractéristiques du joueur
      * @param pseudo   pseudonyme du joueur 
      * @param prefix   1 si joueur1 2 si joueur2 
-     * @param color    couleur du joueur ("R" pour rouge, "J" pour jaune) 
      */
     public Player(String pseudo, int prefix) {
         this.pseudo = pseudo;

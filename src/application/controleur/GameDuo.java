@@ -12,11 +12,15 @@ import application.Color;
 import application.Game;
 import application.Grid;
 import application.Player;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.DialogEvent;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -149,6 +153,9 @@ public class GameDuo {
                 System.out.println("winner");
                 System.out.println("winner");
                 System.out.println("winner");
+                partie.setWinner(partie.getPlayerPlaying());
+                alerteVictoire();
+                
                 
             }
             partie.switchPlayingPlayer();
@@ -156,6 +163,20 @@ public class GameDuo {
     }
    
 
+    
+    /** TODO commenter le rôle de cette méthode (SRP)
+     * 
+     */
+    private static void alerteVictoire() {
+        if(partie.getWinner() != null) {
+            Alert popUp = new Alert(AlertType.INFORMATION);
+            popUp.setAlertType(AlertType.INFORMATION);
+            popUp.setTitle("Fin de la partie");
+            popUp.setHeaderText("Partie remportée par " + partie.getWinner().getPseudo() + " !");
+            popUp.show();
+        }
+    }
+    
     
     /** TODO commenter le rôle de cette méthode (SRP)
      * @param x 
