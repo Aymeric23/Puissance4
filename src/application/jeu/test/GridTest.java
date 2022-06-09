@@ -20,7 +20,7 @@ class GridTest {
     void Gridtest() {
         Grid grid = new Grid();
         grid.randomGeneration(null, null);
-        grid.showGrid();
+        grid.showMatrice();
     }
 
 }

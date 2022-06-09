@@ -15,7 +15,7 @@ public class Player {
     private String pseudo;
     
     /** couleur de ce joueur */
-    private Color color;
+    private String color;
     
     private int prefix;
     
@@ -25,22 +25,25 @@ public class Player {
      * @param pseudo   pseudonyme du joueur 
      * @param prefix   1 si joueur1 2 si joueur2 
      */
-    public Player(String pseudo, int prefix) {
+    public Player(String pseudo) {
         this.pseudo = pseudo;
-        
-        if(prefix > 2 || prefix < 1) {
-            throw new IllegalArgumentException("Prefix Joueur invalide");
-        }
-        this.prefix = prefix;
+    }
+    
+    /**
+     * @return la couleur du joueur
+     */
+    public String getColor() {
+        return color;
     }
     
     /**
      * Modifie la couleur du joueur
-     * @param nouvelleCouleur  nouvelle couleur du joueur
+     * @param nouvelleCouleur du joueur
      */
-    public void setColor(Color nouvelleCouleur) {
+    public void setColor(String nouvelleCouleur) {
         this.color = nouvelleCouleur;
     }
+   
     
     /**
      * @return le pseudo du joueur
@@ -50,18 +53,26 @@ public class Player {
     }
     
     /**
-     * @return la couleur du joueur
+     * Modifie le pseudo du joueur
+     * @param nouveauPseudo du joueur
      */
-    public Color getColor() {
-        return color;
+    public void setPseudo(String nouveauPseudo) {
+        this.pseudo = nouveauPseudo;
     }
-   
     
     /**
-     * @return the prefix
+     * @return prefix du joueur
      */
     public int getPrefix() {
         return prefix;
+    }
+    
+    /**
+     * Modifie le prefix du joueur
+     * @param nouveauPrefix 
+     */
+    public void setPrefix(int nouveauPrefix) {
+        this.prefix = nouveauPrefix;
     }
 
     @Override

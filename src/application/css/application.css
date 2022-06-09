@@ -24,7 +24,8 @@
 }
 
 .menu-button:hover {
-    -fx-background-color: rgb(17, 83, 118, 0.9);
+    -fx-background-color: rgb(17, 83, 118, 1);
+    -fx-cursor: hand;
 }
 
 .menu-title{
@@ -63,4 +64,16 @@
 .grid-column:hover{
     -fx-background-color: #8FB8DE;
     -fx-background-radius: 20px;
+    -fx-cursor: hand;
+}
+
+}
+
+.player-card {
+    -fx-background-color: rgba(17, 83, 118, 0.2);
+    -fx-border-width : 5px;
+    -fx-border-color : rgba(255, 255, 255, 0.3);
+    -fx-border-style : solid;
+    -fx-border-radius : 30px;
+    -fx-background-radius: 30px;
 }

@@ -5,6 +5,7 @@ package application.controleur;
 
 import java.io.IOException;
 
+import application.Game;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,7 +22,12 @@ import javafx.scene.layout.VBox;
  */
 public class Menu {
     
+    private static final String SCENE_SOLO = "/application/fxml/GameSolo.fxml";
+    private static final String SCENE_DUO = "/application/fxml/GameDuo.fxml";
+    private static final String SCENE_MENU = "/application/fxml/Menu.fxml";
+    private static final String SCENE_RULES = "/application/fxml/Rules.fxml";
     private Parent racine;
+    private Game sauvegarde;
     
     @FXML
     private VBox box;
@@ -43,17 +49,31 @@ public class Menu {
         //Charge le fichier fxml en question
         switch (IdBouton) {
             case "solo":
-                destinationFXML = "/application/fxml/GameSolo.fxml";
+                destinationFXML = SCENE_SOLO;
                 break;
             case "duo":
-                destinationFXML = "/application/fxml/GameDuo.fxml";
+                destinationFXML = SCENE_DUO;
+                GameDuo.createDuoGame();
                 break;
             case "puzzle":
-                destinationFXML = "/application/fxml/GamePuzzle.fxml";
+                destinationFXML = SCENE_MENU;
                 break;
             case "load":
-                destinationFXML = "/application/fxml/ListSaveGame.fxml";
+                /* Chargement de la sauvegarde */
+                sauvegarde = Game.chargerSauvegarde();
+                if (sauvegarde.getGamemode() == 1) {
+                    //partie solo
+                    destinationFXML =  SCENE_SOLO;
+                } else if (sauvegarde.getGamemode() == 2) {
+                    //partie duo
+                    GameDuo.loadDuoGame(sauvegarde);
+                    destinationFXML = SCENE_DUO;
+                }
                 break;
+            case "rules":
+                destinationFXML = SCENE_RULES;
+                break;
+
             case "exit":
                 destinationFXML = null;
                 break;   

@@ -16,11 +16,17 @@ import javafx.stage.Stage;
  *         romain.trimouille
  */
 public class Puissance4 extends Application {
+    
+    /** stage principal **/
+    public static Stage stage = null;
+
+    /** Nom du logiciel */
+    public static final String NOM_LOGICIEL = "Puissance 4";
 
     @Override
-    public void start(Stage primaryStage) throws Exception {        
-        // création d'un chargeur de code FXML
+    public void start(Stage primaryStage) throws Exception {    
         FXMLLoader chargeurFXML = new FXMLLoader();
+        // création d'un chargeur de code FXML
 
         // charge le fichier FXML
         chargeurFXML.setLocation(getClass().getResource("/application/fxml/Menu.fxml"));
@@ -33,7 +39,7 @@ public class Puissance4 extends Application {
         primaryStage.setMaximized(true);
         //        primaryStage.setFullScreen(true);
         //        primaryStage.setFullScreenExitHint("");
-        primaryStage.setTitle("Puissance 4");
+        primaryStage.setTitle(NOM_LOGICIEL);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
