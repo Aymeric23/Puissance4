@@ -9,14 +9,9 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 /**
  * Classe contrôleur qui gère l'intéractivité avec la vue décrite 
@@ -29,7 +24,7 @@ public class Menu {
     private Parent racine;
     
     @FXML
-    VBox box;
+    private VBox box;
 
     /**
      * Change la scene actuelle par la scene qui correspond
@@ -37,7 +32,7 @@ public class Menu {
      */
     @FXML
     private void loadScene(ActionEvent event) throws IOException {
-        String destinationFXML;
+        String destinationFXML = null;
         
         // création d'un chargeur de code FXML
         FXMLLoader chargeurFXML = new FXMLLoader();
@@ -45,7 +40,7 @@ public class Menu {
         Button bouton = (Button) event.getSource();
         String IdBouton = bouton.getId();
         
-        //Charge le fichier en question
+        //Charge le fichier fxml en question
         switch (IdBouton) {
             case "solo":
                 destinationFXML = "/application/fxml/GameSolo.fxml";
@@ -62,8 +57,6 @@ public class Menu {
             case "exit":
                 destinationFXML = null;
                 break;   
-            default:
-                throw new IllegalArgumentException("Id bouton invalide : " + IdBouton);
         }
         if (destinationFXML.isEmpty() || destinationFXML == null) {
             exitApp();

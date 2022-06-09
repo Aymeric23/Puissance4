@@ -10,11 +10,11 @@
 }
 
 .root{
-    -fx-background-color: lightgray;
+    -fx-background-image: url("../images/menu-background.jpg");
 }
 
 .menu-button{
-    -fx-background-color: #115376;
+    -fx-background-color: rgb(17, 83, 118, 0.7);
     -fx-border-width: 4px;
     -fx-border-color: #8FB8DE;
     -fx-border-radius: 21px;
@@ -23,28 +23,36 @@
     -fx-text-fill: #F3EDED;
 }
 
+.menu-button:hover {
+    -fx-background-color: rgb(17, 83, 118, 0.9);
+}
+
 .menu-title{
-    -fx-text-fill: #362D2D;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 1), 10, 0.9, 0.0, 0.0);
+    -fx-text-fill: #E5F7FF;
     -fx-font-size: 150px;
     -fx-font-family: 'Bowlby One'; 
 }
 
 .menu-title-4{
-    -fx-text-fill: #BA0000;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 1), 10, 0.9, 0.0, 0.0);
+    -fx-text-fill: #E5F7FF;
     -fx-font-size: 200px;
     -fx-font-family: 'Great Vibes';
 }
 
 .game-duo {
-    -fx-background-image: url("../images/background2.jpg");
+    -fx-background-image: url("../images/duo-background.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain, cover;
 }
+
 
 .grid{
     -fx-background-color: #2B779F;
     -fx-background-radius: 15px;
     -fx-padding: 20.8px;
     -fx-border: solid black 5px;
-    
 }
 
 .grid-column{

@@ -24,12 +24,12 @@
       </HBox>
       <VBox alignment="CENTER" prefHeight="505.0" prefWidth="556.0" spacing="14.0">
          <children>
-            <Button fx:id="solo" mnemonicParsing="false" onAction="#loadScene" prefHeight="90.0" prefWidth="556.0" styleClass="menu-button" text="Solo" />
-            <Button fx:id="duo" mnemonicParsing="false" onAction="#loadScene" prefHeight="90.0" prefWidth="556.0" styleClass="menu-button" text="Versus" />
-            <Button fx:id="puzzle" mnemonicParsing="false" onAction="#loadScene" prefHeight="90.0" prefWidth="556.0" styleClass="menu-button" text="Casse tête" />
-            <Button fx:id="load" mnemonicParsing="false" onAction="#loadScene" prefHeight="90.0" prefWidth="556.0" styleClass="menu-button" text="Charger une partie" />
-            <Button fx:id="rules" mnemonicParsing="false" onAction="#loadScene" prefHeight="90.0" prefWidth="556.0" styleClass="menu-button" text="Règles" />
-            <Button fx:id="exit" mnemonicParsing="false" onAction="#exitApp" prefHeight="90.0" prefWidth="556.0" styleClass="menu-button" text="Quitter" />
+            <Button fx:id="solo" mnemonicParsing="false" onAction="#loadScene" prefWidth="556.0" styleClass="menu-button" text="Solo" />
+            <Button fx:id="duo" mnemonicParsing="false" onAction="#loadScene" prefWidth="556.0" styleClass="menu-button" text="Versus" />
+            <Button fx:id="puzzle" mnemonicParsing="false" onAction="#loadScene" prefWidth="556.0" styleClass="menu-button" text="Casse tête" />
+            <Button fx:id="load" mnemonicParsing="false" onAction="#loadScene" prefWidth="556.0" styleClass="menu-button" text="Charger partie" />
+            <Button fx:id="rules" mnemonicParsing="false" onAction="#loadScene" prefWidth="556.0" styleClass="menu-button" text="Règles" />
+            <Button fx:id="exit" mnemonicParsing="false" onAction="#exitApp" prefWidth="556.0" styleClass="menu-button" text="Quitter" />
          </children>
       </VBox>
    </children>

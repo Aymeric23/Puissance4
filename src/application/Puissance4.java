@@ -33,6 +33,7 @@ public class Puissance4 extends Application {
         primaryStage.setMaximized(true);
         //        primaryStage.setFullScreen(true);
         //        primaryStage.setFullScreenExitHint("");
+        primaryStage.setTitle("Puissance 4");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

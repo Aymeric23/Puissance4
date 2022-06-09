@@ -98,11 +98,11 @@
             </VBox>
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <VBox alignment="CENTER" prefHeight="505.0" prefWidth="556.0" spacing="14.0">
          <children>
-            <Button mnemonicParsing="false" text="Retour au Menu" onMouseClicked="#sceneMenu"/>
-            <Button mnemonicParsing="false" text="Lancer la partie" onMouseClicked="#runTheGame" />
+           <Button fx:id="run" mnemonicParsing="false" prefWidth="556.0" onMouseClicked="#runTheGame" styleClass="menu-button" text="Lancer la partie" />
+           <Button fx:id="exit" mnemonicParsing="false" prefWidth="556.0" onMouseClicked="#showSceneMenu" styleClass="menu-button" text="Retour au menu" />
          </children>
-      </HBox>
+      </VBox>
    </children>
 </VBox>

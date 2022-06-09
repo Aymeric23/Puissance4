@@ -57,11 +57,12 @@ public class GameDuo {
     
     /**
      * Change la scene actuelle par la scene qui correspond au menu
+     * Permet un retour a l'ecran du menu
      * @param PrimaryStage 
      * @throws IOException 
      */
     @FXML
-    private void sceneMenu(MouseEvent event) throws IOException {
+    private void showSceneMenu(MouseEvent event) throws IOException {
         // création d'un chargeur de code FXML
         FXMLLoader chargeurFXML = new FXMLLoader();
          
@@ -76,7 +77,8 @@ public class GameDuo {
         stage.show();
     }
     
-    /** TODO commenter le rôle de cette méthode (SRP)
+    /**
+     * Recupere le pseudo du joueur 1 saisi dans la TextField fx:id=pseudoP1
      * @return le pseudo du joueur 1
      */
     @FXML
@@ -84,29 +86,13 @@ public class GameDuo {
         return pseudoP1.getText();
     }
     
-    /** TODO commenter le rôle de cette méthode (SRP)
+    /**
+     * Recupere le pseudo du joueur 1 saisi dans la TextField fx:id=pseudoP1
      * @return le pseudo du joueur 2
      */
     @FXML
     public String getPseudoP2() {
         return pseudoP2.getText();
-    }
-    
-    /**
-     * Lancement du jeu duo
-     */
-    @FXML
-    public void runTheGame() {
-        Player j1 = new Player(getPseudoP1(), 1);
-        Player j2 = new Player(getPseudoP2(), 2);
-        /*Affecte une couleur de manière aléatoire*/
-        randomizePlayerColor(j1, j2);
-        partie.setPlayer1(j1);
-        partie.setPlayer2(j2);
-        partie.setPlayerPlaying(j1);
-        
-        /* lancement de la partie */
-        partie.startGame();      
     }
     
     
@@ -127,10 +113,28 @@ public class GameDuo {
         player2.setColor(couleurs[numCouleur+1]);
     }
     
+    
+    /**
+     * Lancement de la partie en mode Duo
+     */
+    @FXML
+    public void runTheGame() {
+        Player j1 = new Player(getPseudoP1(), 1);
+        Player j2 = new Player(getPseudoP2(), 2);
+        /*Affecte une couleur de manière aléatoire*/
+        randomizePlayerColor(j1, j2);
+        partie.setPlayer1(j1);
+        partie.setPlayer2(j2);
+        partie.setPlayerPlaying(j1);
+        
+        /* lancement de la partie */
+        partie.startGame();      
+    }
+    
+    
     /** 
      * Se déclenche lorsque le joueur clic sur une colone
      * @param event 
-     * @param a 
      */
     @FXML
     private void clickingOnColone(MouseEvent event) {
@@ -164,12 +168,14 @@ public class GameDuo {
    
 
     
-    /** TODO commenter le rôle de cette méthode (SRP)
-     * 
+    /**
+     * Lorsque la partie est gagnee pas un joueur, une alrte/popup est affichee 
+     * a l'ecran pour indiquer la victoire
      */
     private static void alerteVictoire() {
         if(partie.getWinner() != null) {
             Alert popUp = new Alert(AlertType.INFORMATION);
+            popUp.
             popUp.setAlertType(AlertType.INFORMATION);
             popUp.setTitle("Fin de la partie");
             popUp.setHeaderText("Partie remportée par " + partie.getWinner().getPseudo() + " !");
