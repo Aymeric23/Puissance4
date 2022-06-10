@@ -67,19 +67,22 @@ public class GameDuo {
     @FXML
     private void showSceneMenu(MouseEvent event) throws IOException {
         //Demande a l'utilisateur s'il veut sauvegarder avant de quitter
-        alerteSauvegarder();
-        // création d'un chargeur de code FXML
-        FXMLLoader chargeurFXML = new FXMLLoader();
-         
-        // charge le fichier FXML
-        chargeurFXML.setLocation(getClass().getResource("/application/"
-                    +"fxml/Menu.fxml"));
-         
-        racine = chargeurFXML.load();
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(racine);
-        stage.setScene(scene);
-        stage.show();
+        boolean quitter = alerteSauvegarderQuitter();
+        /* si l'utilisateur souhaite quitter */
+        if (quitter) { 
+            // création d'un chargeur de code FXML
+            FXMLLoader chargeurFXML = new FXMLLoader();
+             
+            // charge le fichier FXML
+            chargeurFXML.setLocation(getClass().getResource("/application/"
+                        +"fxml/Menu.fxml"));
+             
+            racine = chargeurFXML.load();
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(racine);
+            stage.setScene(scene);
+            stage.show();
+            }
     }
     
     /**
@@ -212,8 +215,10 @@ public class GameDuo {
     /**
      * Lorsque le joueur veut quitter si la partie n'est pas finie, 
      * le jeu lui demande s'il veut sauvegarder.
+     * @return 
      */
-    private static void alerteSauvegarder() {
+    private static boolean alerteSauvegarderQuitter() {
+        boolean quitter = true;
         //TODO verifie partie non finie 
         Alert popUp = new Alert(AlertType.WARNING);
         popUp.setAlertType(AlertType.WARNING);
@@ -225,7 +230,7 @@ public class GameDuo {
         ButtonType nePasSauvegarder = new ButtonType("Quitter sans sauvegarder");
         ButtonType annuler = new ButtonType("Annuler");
 
-        popUp.getButtonTypes().clear();
+        popUp.getButtonTypes().remove(popUp);
         popUp.getButtonTypes().addAll(sauvegarder, nePasSauvegarder, annuler);
 
         Optional<ButtonType> option = popUp.showAndWait();
@@ -233,9 +238,10 @@ public class GameDuo {
             partie.sauvegarder();
         } else if (option.get() == nePasSauvegarder) {
             //ne pas sauvegarder
-        } else {
-            //annuler
+        } else { //s'il clique sur la croix ou annuler
+            quitter = false;
         }
+        return quitter;
     }
 
 

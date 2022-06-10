@@ -8,6 +8,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -40,6 +41,7 @@ public class Puissance4 extends Application {
 //        primaryStage.setFullScreen(true);
 //        primaryStage.setFullScreenExitHint("");
         primaryStage.setTitle(NOM_LOGICIEL);
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/application/images/logo.png")));
         primaryStage.setScene(scene);
         primaryStage.show();
     }

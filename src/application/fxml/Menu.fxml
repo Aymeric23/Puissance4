@@ -10,12 +10,7 @@
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label styleClass="menu-title" text="PUISSANCE">
-               <font>
-                  <Font size="96.0" />
-               </font>
-            </Label>
-            <Label styleClass="menu-title-4" text=" 4">
+            <Label styleClass="title" text="PUISSANCE 4">
                <font>
                   <Font size="96.0" />
                </font>

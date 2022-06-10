@@ -1,30 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controleur.Rules">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controleur.Rules">
    <children>
-      <Label text="Règles">
+      <Label styleClass="title" text="RÈGLES">
          <font>
             <Font size="69.0" />
          </font>
       </Label>
-      <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="928.0" vbarPolicy="ALWAYS">
+      <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="928.0" styleClass="rules-scrollPane" vbarPolicy="ALWAYS">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="3500.0" prefWidth="912.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="912.0" styleClass="rules-anchoPane">
                <children>
-                  <Label alignment="TOP_CENTER" contentDisplay="TOP" ellipsisString="" layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="3500.0" prefWidth="879.0" text="Le jeu de société Puissance 4 se joue à deux sur une grille de sept colonnes sur six lignes. Dans jeu, chaque joueur joue tour à tour et doit placer les pions de la ligne la plus basse jusqu’à la ligne la plus haute. Le but est d’aligner quatre pions d’un même joueur (de même couleur) de manière horizontale, verticale ou en diagonale; le premier à y parvenir gagne. Les modes de jeu- Solo est un mode de jeu dans lequel vous jouez contre l'ordinateur.- Versus est un mode de jeu dans lequel vous pouvez affronter vos amis.- Casse-tête est un mode de jeu dans lequel vous pourrez résoudre des grilles et obtenir le meilleur score. Les règles du Puissance 4Début de partiePour commencer une partie de puissance 4, sélectionnez le mode de jeu et choisissez votre pseudo. C'est le joueur avec la couleur rouge qui commencera.Déroulement de la partieLe premier joueur met un jeton de sa couleur dans l'une des colonnes de son choix. Le jeton se retrouve en bas de la colonne.Le deuxième joueur insère à son tour son jeton, de l'autre couleur dans la colonne de son choix. Les joueurs répètent la manoeuvre jusqu'à ce qu'un joueur aligne 4 jetons.Fin de la partieLe premier joueur à aligner 4 pions, que ce soit horizontalement, verticalement ou en diagonale, remporte la partie.Si aucun joueur ne parvient à aligner les 4 jetons, la partie est déclarée nulle." textOverrun="CLIP" wrapText="true">
-                     <font>
-                        <Font size="48.0" />
-                     </font>
-                  </Label>
+                  <VBox alignment="TOP_CENTER" layoutY="-2.0" prefHeight="1138.0" prefWidth="877.0" spacing="100.0">
+                     <children>
+                        <Label alignment="TOP_CENTER" contentDisplay="TOP" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="454.0" style="-fx-font-weight: bold;" text="Déroulement" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+                           <font>
+                              <Font size="29.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="169.0" prefWidth="789.0" spacing="100.0">
+                           <children>
+                              <ImageView fitHeight="172.0" fitWidth="201.0">
+                                 <image>
+                                    <Image url="@../images/rule1.PNG" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="TOP_CENTER" contentDisplay="TOP" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="454.0" text="En partant d'une grille vide vous devez placer à tour de rôle votre pion. Le premier joueur à aligner 4 pions gagne !" textFill="#e5f7ff" textOverrun="CLIP" wrapText="true">
+                                 <font>
+                                    <Font size="29.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Line endX="357.0" startX="-100.0" stroke="#E5F7FF" strokeWidth="2.0" />
+                        <Label alignment="TOP_CENTER" contentDisplay="TOP" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="454.0" style="-fx-font-weight: bold;" text="Victoires" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+                           <font>
+                              <Font size="29.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="169.0" prefWidth="789.0" spacing="100.0">
+                           <children>
+                              <Label alignment="TOP_CENTER" contentDisplay="TOP" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="454.0" text="4 pions alignés horizontalement permettent la victoire" textFill="#e5f7ff" textOverrun="CLIP" wrapText="true">
+                                 <font>
+                                    <Font size="29.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="174.0" fitWidth="200.0">
+                                 <image>
+                                    <Image url="@../images/rule2.PNG" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="169.0" prefWidth="789.0" spacing="100.0">
+                           <children>
+                              <ImageView fitHeight="174.0" fitWidth="200.0">
+                                 <image>
+                                    <Image url="@../images/rule3.PNG" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="TOP_CENTER" contentDisplay="TOP" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="454.0" text="4 pions alignés verticalement permettent la victoire" textFill="#e5f7ff" textOverrun="CLIP" wrapText="true">
+                                 <font>
+                                    <Font size="29.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="169.0" prefWidth="789.0" spacing="100.0">
+                           <children>
+                              <Label alignment="TOP_CENTER" contentDisplay="TOP" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="454.0" text="4 pions alignés en diagonale permettent la victoire" textFill="#e5f7ff" textOverrun="CLIP" wrapText="true">
+                                 <font>
+                                    <Font size="29.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="174.0" fitWidth="200.0">
+                                 <image>
+                                    <Image url="@../images/rule4.PNG" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Line endX="357.0" startX="-100.0" stroke="#E5F7FF" strokeWidth="2.0" />
+                        <Label alignment="TOP_CENTER" contentDisplay="TOP" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="454.0" style="-fx-font-weight: bold;" text="Conseils" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+                           <font>
+                              <Font size="29.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="169.0" prefWidth="789.0" spacing="100.0">
+                           <children>
+                              <ImageView fitHeight="174.0" fitWidth="200.0">
+                                 <image>
+                                    <Image url="@../images/rule5.png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="TOP_CENTER" contentDisplay="TOP" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="454.0" text="Faites en sorte de détourner l'attention de votre adversaire pour gagner. Attention, ce dernier peut essayer vous bloquer, ayez toujours un coup d'avance sur lui !" textFill="#e5f7ff" textOverrun="CLIP" wrapText="true">
+                                 <font>
+                                    <Font size="29.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="169.0" prefWidth="789.0" spacing="100.0">
+                           <children>
+                              <Label alignment="TOP_CENTER" contentDisplay="TOP" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="454.0" text="Faites attention à ne pas trop être concentré sur votre jeu, votre adversaire pourrait en profiter pour aligner 4 de ses pions !" textFill="#e5f7ff" textOverrun="CLIP" wrapText="true">
+                                 <font>
+                                    <Font size="29.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="174.0" fitWidth="200.0">
+                                 <image>
+                                    <Image url="@../images/rule6.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="40.0" left="20.0" right="20.0" top="40.0" />
+                     </padding>
+                  </VBox>
                </children>
             </AnchorPane>
          </content>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
       </ScrollPane>
-      <Button mnemonicParsing="false" onAction="#sceneMenu" text="retour" />
+      <Button mnemonicParsing="false" onAction="#sceneMenu" prefWidth="556.0" styleClass="menu-button" text="retour" />
    </children>
 </VBox>

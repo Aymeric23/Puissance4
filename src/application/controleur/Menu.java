@@ -24,7 +24,7 @@ public class Menu {
     
     private static final String SCENE_SOLO = "/application/fxml/GameSolo.fxml";
     private static final String SCENE_DUO = "/application/fxml/GameDuo.fxml";
-    private static final String SCENE_MENU = "/application/fxml/Menu.fxml";
+    private static final String SCENE_PUZZLE = "/application/fxml/GamePuzzle.fxml";
     private static final String SCENE_RULES = "/application/fxml/Rules.fxml";
     private Parent racine;
     private Game sauvegarde;
@@ -56,7 +56,7 @@ public class Menu {
                 GameDuo.createDuoGame();
                 break;
             case "puzzle":
-                destinationFXML = SCENE_MENU;
+                destinationFXML = SCENE_PUZZLE;
                 break;
             case "load":
                 /* Chargement de la sauvegarde */
@@ -68,6 +68,9 @@ public class Menu {
                     //partie duo
                     GameDuo.loadDuoGame(sauvegarde);
                     destinationFXML = SCENE_DUO;
+                } else if (sauvegarde.getGamemode() == 3) {
+                    //partie puzzle
+                    destinationFXML = SCENE_PUZZLE;
                 }
                 break;
             case "rules":
