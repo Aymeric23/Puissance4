@@ -20,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -35,9 +36,13 @@ import javafx.stage.Stage;
  */
 public class GameDuo {
     
+    /* elements FXML */
     @FXML
-    /* Element FXML grille */
     private HBox grille;
+    @FXML
+    private Label joueur1;
+    @FXML
+    private Label joueur2;
     
     private static final String NOM_JEU = "Versus";
     private static Stage stage;
@@ -255,16 +260,17 @@ public class GameDuo {
     }
     
     /** 
-     * Met a jour la grille graphique
-     * @param partie dont la grille visuelle doit etre mise a jour 
+     * initialise les composant graphiques tel que la grille, les pseudos 
+     * des joueurs, leur couleur...
      * 
      */
     @FXML
-    private void updateGraphicGrid() {
+    private void initGraphicsComponent() {
         Grid grille = partie.getGrid();
         int[][] matrice = grille.getMatrice();
         int prefix = 0;
         Player detenteurDuPion;
+        Player playingPlayer;
         
         /* On met a jour la grille graphique lors du chargement */
         for (int x = 0; x < matrice.length; x++) {
@@ -276,7 +282,15 @@ public class GameDuo {
                 }
             }
         }
+        joueur1.setText(partie.getPlayer1().getPseudo());
+        joueur2.setText(partie.getPlayer2().getPseudo());
+        /* on met a jour les cartes des joueurs */
+//        playingPlayer = partie.getPlayerPlaying();
+//        if (playingPlayer.getPrefix() == 1) {
+//            joueur1.set
+//        }
     }
+    
     
     
     /** 
