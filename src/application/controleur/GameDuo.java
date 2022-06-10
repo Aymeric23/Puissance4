@@ -26,6 +26,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 
@@ -40,9 +41,11 @@ public class GameDuo {
     @FXML
     private HBox grille;
     @FXML
-    private Label joueur1;
-    @FXML
-    private Label joueur2;
+    private Label joueur1,
+                  joueur2;
+    @FXML 
+    private Circle cercleJoueur1,
+                   cercleJoueur2;
     
     private static final String NOM_JEU = "Versus";
     private static Stage stage;
@@ -95,7 +98,16 @@ public class GameDuo {
     public static void createDuoGame() {
         partie = new Game(2);
         String pseudoJ1 = alertePeudoJoueur1();
+        /* Si pseudo vide */
+        if (pseudoJ1.isBlank() || pseudoJ1 == null) {
+            pseudoJ1 = "Joueur 1";
+        }
+        
+        /* Si pseudo vide */
         String pseudoJ2 = alertePeudoJoueur2();
+        if (pseudoJ2.isBlank() || pseudoJ2 == null) {
+            pseudoJ2 = "Joueur 2";
+        }
        // Demander les pseudos
         Player j1 = new Player(pseudoJ1);
         if (pseudoJ1.equals(pseudoJ2)) {
@@ -284,6 +296,8 @@ public class GameDuo {
         }
         joueur1.setText(partie.getPlayer1().getPseudo());
         joueur2.setText(partie.getPlayer2().getPseudo());
+        cercleJoueur1.setFill(Paint.valueOf(partie.getPlayer1().getColor()));
+        cercleJoueur2.setFill(Paint.valueOf(partie.getPlayer2().getColor()));
         /* on met a jour les cartes des joueurs */
 //        playingPlayer = partie.getPlayerPlaying();
 //        if (playingPlayer.getPrefix() == 1) {

@@ -37,8 +37,8 @@ public class Puissance4 extends Application {
 
         // définition des caractéristiques de la fenêtre
         primaryStage.setMaximized(true);
-        //        primaryStage.setFullScreen(true);
-        //        primaryStage.setFullScreenExitHint("");
+//        primaryStage.setFullScreen(true);
+//        primaryStage.setFullScreenExitHint("");
         primaryStage.setTitle(NOM_LOGICIEL);
         primaryStage.setScene(scene);
         primaryStage.show();
