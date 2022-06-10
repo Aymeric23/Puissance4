@@ -71,22 +71,19 @@ public class GameDuo {
     @FXML
     private void showSceneMenu(MouseEvent event) throws IOException {
         //Demande a l'utilisateur s'il veut sauvegarder avant de quitter
-        boolean quitter = alerteSauvegarderQuitter();
         /* si l'utilisateur souhaite quitter */
-        if (quitter) { 
-            // création d'un chargeur de code FXML
-            FXMLLoader chargeurFXML = new FXMLLoader();
-             
-            // charge le fichier FXML
-            chargeurFXML.setLocation(getClass().getResource("/application/"
+        // création d'un chargeur de code FXML
+        FXMLLoader chargeurFXML = new FXMLLoader();
+
+        // charge le fichier FXML
+        chargeurFXML.setLocation(getClass().getResource("/application/"
                         +"fxml/Menu.fxml"));
-             
-            racine = chargeurFXML.load();
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(racine);
-            stage.setScene(scene);
-            stage.show();
-            }
+
+        racine = chargeurFXML.load();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(racine);
+        stage.setScene(scene);
+        stage.show();
     }
     
     /**
@@ -160,34 +157,30 @@ public class GameDuo {
         VBox idColone = (VBox) event.getSource();
         /* Récupère l'id sous forme de String et le converti en int*/
         int idColoneInt = Integer.parseInt(idColone.getId());
-        
+
         if (!partie.getGrid().isFullColumn(idColoneInt)) {
             /*Recherche une case vide*/
             partie.getGrid().getEmptyCaseFromColumn(idColoneInt);
             int x = partie.getGrid().getCurrentColumn();
             int y = partie.getGrid().getCurrentLine();
             addJeton(x, y, partie.getPlayerPlaying());
-            
+
             if (partie.getGrid().isAlign(partie.getPlayerPlaying())) {
-                System.out.println("winner");
-                System.out.println("winner");
-                System.out.println("winner");
-                System.out.println("winner");
-                System.out.println("winner");
-                System.out.println("winner");
+                /*Si gagnant*/
                 partie.setWinner(partie.getPlayerPlaying());
-                alerteVictoire();
-                //TODO quitter
-                switchPlayerCard();
-                
+                alerteVictoire(event);
+
             }
-            partie.switchPlayingPlayer();
-            switchPlayerCard();
-         }
+        }
+        /* Si grille pleine */
+        if (partie.getGrid().isFull()) {
+            alerteEgalite(event);
+        }
+
+        /* Donne la main a l'autre joueur */
+        partie.switchPlayingPlayer();
+        switchPlayerCard();
     }
-    
-    
-    //TODO vérifier que la grille n'est pas plein et pas de victoire => partie fini car victoire impossible
     
     /**
      * Lorsque la partie ce lance, les pseudos sont demandés 
@@ -221,10 +214,9 @@ public class GameDuo {
     /**
      * Lorsque le joueur veut quitter si la partie n'est pas finie, 
      * le jeu lui demande s'il veut sauvegarder.
-     * @return 
      */
-    private static boolean alerteSauvegarderQuitter() {
-        boolean quitter = true;
+    @FXML
+    private void alerteSauvegarderQuitter(MouseEvent event) {
         //TODO verifie partie non finie 
         Alert popUp = new Alert(AlertType.WARNING);
         popUp.setAlertType(AlertType.WARNING);
@@ -236,7 +228,7 @@ public class GameDuo {
         ButtonType nePasSauvegarder = new ButtonType("Quitter sans sauvegarder");
         ButtonType annuler = new ButtonType("Annuler");
 
-        popUp.getButtonTypes().remove(popUp);
+        popUp.getButtonTypes().clear();
         popUp.getButtonTypes().addAll(sauvegarder, nePasSauvegarder, annuler);
 
         Optional<ButtonType> option = popUp.showAndWait();
@@ -245,9 +237,14 @@ public class GameDuo {
         } else if (option.get() == nePasSauvegarder) {
             //ne pas sauvegarder
         } else { //s'il clique sur la croix ou annuler
-            quitter = false;
+            /* retour menu */
+            try {
+                showSceneMenu(event);
+            } catch (IOException exception) {
+                // TODO Auto-generated catch block
+                System.err.println("Une erreur c'est produite : " + exception.getMessage());
+            }
         }
-        return quitter;
     }
 
 
@@ -256,36 +253,51 @@ public class GameDuo {
      * Lorsque la partie est gagnee pas un joueur, une alrte/popup est affichee 
      * a l'ecran pour indiquer la victoire
      */
-    private static void alerteVictoire() {
-        if(partie.getWinner() != null) {
-            Alert popUp = new Alert(AlertType.INFORMATION);
-            popUp.setAlertType(AlertType.INFORMATION);
-            popUp.setTitle(Puissance4.NOM_LOGICIEL + " - " + NOM_JEU);
-            popUp.setHeaderText("Fin de la partie !\n"
-                                + "La partie est remportée par " 
-                                + partie.getWinner().getPseudo() + " !");
-            popUp.show();
-            
+    private void alerteVictoire(MouseEvent event) {
+        Alert popUp = new Alert(AlertType.INFORMATION);
+        popUp.setAlertType(AlertType.INFORMATION);
+        popUp.setTitle(Puissance4.NOM_LOGICIEL + " - " + NOM_JEU);
+        popUp.setHeaderText("Fin de la partie !\n"
+                        + "La partie est remportée par " 
+                        + partie.getWinner().getPseudo() + " !");
+        ButtonType retournerAuMenu = new ButtonType("Retourner au menu principal");
+
+        popUp.getButtonTypes().clear();
+        popUp.getButtonTypes().addAll(retournerAuMenu);
+
+        popUp.showAndWait();
+        
+        try {
+            showSceneMenu(event);
+        } catch (IOException exception) {
+            System.err.println("Une erreur c'est produite : " + exception.getMessage());
         }
     }
-    
+
     /**
      * Lorsque la grille est pleine et il n'y aucun vainqueur 
      * a l'ecran pour indiquer la victoire
      */
-    private static void alerteEgalite() {
-        if(partie.getWinner() != null) {
-            Alert popUp = new Alert(AlertType.INFORMATION);
-            popUp.setAlertType(AlertType.INFORMATION);
-            popUp.setTitle(Puissance4.NOM_LOGICIEL + " - " + NOM_JEU);
-            popUp.setHeaderText("Fin de la partie !\n"
-                                + "La partie est remportée par " 
-                                + partie.getWinner().getPseudo() + " !");
-            popUp.show();
-            
+    private void alerteEgalite(MouseEvent event) {
+        Alert popUp = new Alert(AlertType.INFORMATION);
+        popUp.setAlertType(AlertType.INFORMATION);
+        popUp.setTitle(Puissance4.NOM_LOGICIEL + " - " + NOM_JEU);
+        popUp.setHeaderText("Fin de la partie !\n"
+                        + "Aucun joueur n'a remporté la partie ! ");
+        ButtonType retournerAuMenu = new ButtonType("Retourner au menu principal");
+
+        popUp.getButtonTypes().clear();
+        popUp.getButtonTypes().addAll(retournerAuMenu);
+
+        popUp.showAndWait();
+
+        try {
+            showSceneMenu(event);
+        } catch (IOException exception) {
+            System.err.println("Une erreur c'est produite : " + exception.getMessage());
         }
     }
-    
+
     
     /** 
      * Lorsque le joueur ajoute un jeton

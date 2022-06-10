@@ -120,6 +120,22 @@ public class Grid {
     }
     
     /** 
+     * Verifie si la grille est pleine ou non  
+     * @param indice de la colone
+     * @return true si colone pleine false sinon
+     */
+    public boolean isFull() {
+        for (int i = 0; i < matrice.length; i++) {
+            for (int j = 0; j < matrice[i].length; j++) {
+                if (matrice[i][j] == 0) {
+                    return false;
+                };
+            }
+        }
+        return true;
+    }
+    
+    /** 
      * Verifie si la case[x][y] est vide == "0"
      * @param x
      * @param y
