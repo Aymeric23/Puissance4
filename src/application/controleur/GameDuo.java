@@ -47,6 +47,10 @@ public class GameDuo {
     private Circle cercleJoueur1,
                    cercleJoueur2;
     
+    @FXML 
+    private VBox cardP1,
+                 cardP2;
+    
     private static final String NOM_JEU = "Versus";
     private static Stage stage;
     private static Scene scene;
@@ -173,10 +177,12 @@ public class GameDuo {
                 System.out.println("winner");
                 partie.setWinner(partie.getPlayerPlaying());
                 alerteVictoire();
-                
+                //TODO quitter
+                switchPlayerCard();
                 
             }
             partie.switchPlayingPlayer();
+            switchPlayerCard();
          }
     }
     
@@ -263,6 +269,23 @@ public class GameDuo {
         }
     }
     
+    /**
+     * Lorsque la grille est pleine et il n'y aucun vainqueur 
+     * a l'ecran pour indiquer la victoire
+     */
+    private static void alerteEgalite() {
+        if(partie.getWinner() != null) {
+            Alert popUp = new Alert(AlertType.INFORMATION);
+            popUp.setAlertType(AlertType.INFORMATION);
+            popUp.setTitle(Puissance4.NOM_LOGICIEL + " - " + NOM_JEU);
+            popUp.setHeaderText("Fin de la partie !\n"
+                                + "La partie est remportée par " 
+                                + partie.getWinner().getPseudo() + " !");
+            popUp.show();
+            
+        }
+    }
+    
     
     /** 
      * Lorsque le joueur ajoute un jeton
@@ -288,7 +311,6 @@ public class GameDuo {
         int[][] matrice = grille.getMatrice();
         int prefix = 0;
         Player detenteurDuPion;
-        Player playingPlayer;
         
         /* On met a jour la grille graphique lors du chargement */
         for (int x = 0; x < matrice.length; x++) {
@@ -300,15 +322,25 @@ public class GameDuo {
                 }
             }
         }
+        /* Met a jour la couleur des cartes */
         joueur1.setText(partie.getPlayer1().getPseudo());
         joueur2.setText(partie.getPlayer2().getPseudo());
         cercleJoueur1.setFill(Paint.valueOf(partie.getPlayer1().getColor()));
         cercleJoueur2.setFill(Paint.valueOf(partie.getPlayer2().getColor()));
-        /* on met a jour les cartes des joueurs */
-//        playingPlayer = partie.getPlayerPlaying();
-//        if (playingPlayer.getPrefix() == 1) {
-//            joueur1.set
-//        }
+        switchPlayerCard();
+    }
+    
+    /**
+     * Change les couleurs des cartes en fonction du joueur qui joue
+     */
+    private void switchPlayerCard() {
+        if (partie.getPlayerPlaying() == partie.getPlayer1()) {
+            cardP1.setOpacity(1.0);
+            cardP2.setOpacity(0.5);
+        } else if (partie.getPlayerPlaying() == partie.getPlayer2()) {
+            cardP2.setOpacity(1.0);
+            cardP1.setOpacity(0.5);
+        }
     }
     
     

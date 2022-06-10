@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controleur.Rules">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" spacing="20.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controleur.Rules">
    <children>
       <Label styleClass="title" text="RÈGLES">
          <font>
@@ -25,9 +25,9 @@
                <children>
                   <VBox alignment="TOP_CENTER" layoutY="-2.0" prefHeight="1138.0" prefWidth="877.0" spacing="100.0">
                      <children>
-                        <Label alignment="TOP_CENTER" contentDisplay="TOP" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="454.0" style="-fx-font-weight: bold;" text="Déroulement" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+                        <Label alignment="TOP_CENTER" contentDisplay="TOP" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="454.0" styleClass="rules-subtitle" text="Déroulement" textFill="WHITE" textOverrun="CLIP" wrapText="true">
                            <font>
-                              <Font size="29.0" />
+                              <Font name="System Bold" size="29.0" />
                            </font>
                         </Label>
                         <HBox alignment="CENTER" prefHeight="169.0" prefWidth="789.0" spacing="100.0">
@@ -45,9 +45,9 @@
                            </children>
                         </HBox>
                         <Line endX="357.0" startX="-100.0" stroke="#E5F7FF" strokeWidth="2.0" />
-                        <Label alignment="TOP_CENTER" contentDisplay="TOP" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="454.0" style="-fx-font-weight: bold;" text="Victoires" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+                        <Label alignment="TOP_CENTER" contentDisplay="TOP" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="454.0" styleClass="rules-subtitle" text="Victoires" textFill="WHITE" textOverrun="CLIP" wrapText="true">
                            <font>
-                              <Font size="29.0" />
+                              <Font name="System Bold" size="29.0" />
                            </font>
                         </Label>
                         <HBox alignment="CENTER" prefHeight="169.0" prefWidth="789.0" spacing="100.0">
@@ -93,9 +93,9 @@
                            </children>
                         </HBox>
                         <Line endX="357.0" startX="-100.0" stroke="#E5F7FF" strokeWidth="2.0" />
-                        <Label alignment="TOP_CENTER" contentDisplay="TOP" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="454.0" style="-fx-font-weight: bold;" text="Conseils" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+                        <Label alignment="TOP_CENTER" contentDisplay="TOP" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="454.0" styleClass="rules-subtitle" text="Conseils" textFill="WHITE" textOverrun="CLIP" wrapText="true">
                            <font>
-                              <Font size="29.0" />
+                              <Font name="System Bold" size="29.0" />
                            </font>
                         </Label>
                         <HBox alignment="CENTER" prefHeight="169.0" prefWidth="789.0" spacing="100.0">
@@ -138,6 +138,6 @@
             <Insets />
          </VBox.margin>
       </ScrollPane>
-      <Button mnemonicParsing="false" onAction="#sceneMenu" prefWidth="556.0" styleClass="menu-button" text="retour" />
+      <Button mnemonicParsing="false" onAction="#sceneMenu" prefWidth="556.0" styleClass="menu-button" text="Retour" />
    </children>
 </VBox>

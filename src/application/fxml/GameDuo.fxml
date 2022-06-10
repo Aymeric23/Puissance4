@@ -12,9 +12,9 @@
       <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="200.0">
          <children>
-            <VBox fx:id="cardP1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="277.0" prefWidth="256.0" styleClass="player-card">
+            <VBox fx:id="cardP1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="277.0" prefWidth="256.0" spacing="20.0" styleClass="player-card">
                <children>
-                  <Circle fx:id="cercleJoueur1" fill="WHITE" radius="76.0" />
+                  <Circle fx:id="cercleJoueur1" fill="WHITE" radius="76.0" stroke="WHITE" strokeWidth="2.0"/>
                   <Label fx:id="joueur1" text="Joueur 1" textFill="#e5f7ff">
                      <font>
                         <Font size="48.0" />
@@ -96,9 +96,9 @@
                   </VBox>
                </children>
             </HBox>
-            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="277.0" prefWidth="256.0" styleClass="player-card">
+            <VBox fx:id="cardP2" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="277.0" prefWidth="256.0" spacing="20.0" styleClass="player-card">
                <children>
-                  <Circle fx:id="cercleJoueur2" fill="WHITE" radius="76.0" />
+                  <Circle fx:id="cercleJoueur2" fill="WHITE" radius="76.0" stroke="WHITE" strokeWidth="2.0"/>
                   <Label fx:id="joueur2" text="Joueur 2" textFill="#e5f7ff">
                      <font>
                         <Font size="48.0" />
