@@ -366,6 +366,7 @@ public class GameDuo {
      * @param color 
      */
      private void setCircleColor(String id, String color) {
+        System.out.println("Mise a jour de la couleur du cercle : " + id);
         ((Shape) grille.lookup("#"+id)).setFill(Paint.valueOf(color));
     }
 }

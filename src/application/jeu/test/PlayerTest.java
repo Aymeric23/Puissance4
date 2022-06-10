@@ -26,11 +26,6 @@ class PlayerTest {
         "abcdefghijk", "Jean pierre", ".§:;$*=+^¨1", "aymeric thevenet"
     };
     
-    final private String[] TO_STRING_CORRECT= {
-        "Player [pseudo = Aymeric + \", color = \" + color.toString() \r\n"
-        + "                + \", prefix = \" + prefix + \"]",            
-    };
-    
     @Test
     @DisplayName("Test du constructeur")
     void testPlayer() {

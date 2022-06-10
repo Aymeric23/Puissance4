@@ -85,17 +85,4 @@ class GameTest {
             assertNotEquals(TO_STRING_INCORRECTE[i], game.toString());
         }
     }
-    
-    @Test
-    @DisplayName("Test chargerSauvegarde")
-    void testChargerSauvegarde() {
-        for (int i = 0; i < MODE_JEU.length; i++) {
-            Game game = new Game(MODE_JEU[i]);
-            assertEquals(TO_STRING_CORRECTE[i], game.toString());
-        }
-        for (int i = 0; i < MODE_JEU.length; i++) {
-            Game game = new Game(MODE_JEU[i]);
-            assertNotEquals(TO_STRING_INCORRECTE[i], game.toString());
-        }
-    }
 }

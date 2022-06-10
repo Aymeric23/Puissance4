@@ -54,7 +54,7 @@ public class Game {
      * @throws IllegalArgumentException si gamemode invalide.
      */
     public Game(int gamemode) {
-        if (gamemode < 1 || gamemode > 2) {
+        if (gamemode < 1 || gamemode > 3) {
             System.out.println(gamemode);
             throw new IllegalArgumentException("Le gamemode doit être egal a 1 ou 2");
         }

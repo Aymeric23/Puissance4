@@ -24,8 +24,12 @@ public class Player {
      * Définition des caractéristiques du joueur
      * @param pseudo   pseudonyme du joueur 
      * @param prefix   1 si joueur1 2 si joueur2 
+     * @throws IllegalArgumentException si il y a plus de 10 caractères
      */
     public Player(String pseudo) {
+        if (pseudo.length() > 10) {
+            throw new IllegalArgumentException("Il y a trop de caractères");
+        }
         this.pseudo = pseudo;
     }
     
