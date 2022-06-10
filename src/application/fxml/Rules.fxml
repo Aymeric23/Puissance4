@@ -138,6 +138,6 @@
             <Insets />
          </VBox.margin>
       </ScrollPane>
-      <Button mnemonicParsing="false" onAction="#sceneMenu" prefWidth="556.0" styleClass="menu-button" text="Retour" />
+      <Button mnemonicParsing="false" onAction="#sceneMenu" prefWidth="556.0" styleClass="menu-button" text="Retourner au menu" />
    </children>
 </VBox>

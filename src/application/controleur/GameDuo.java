@@ -4,7 +4,6 @@
 package application.controleur;
 
 import java.io.IOException;
-import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.Random;
 
@@ -97,6 +96,7 @@ public class GameDuo {
      * Creation d'une partie en mode Duo
      */
     public static void createDuoGame() {
+        Random aleatoire = new Random();
         partie = new Game(2);
         String pseudoJ1 = alertePeudoJoueur1();
         /* Si pseudo vide */
@@ -109,6 +109,7 @@ public class GameDuo {
         if (pseudoJ2.isBlank() || pseudoJ2 == null) {
             pseudoJ2 = "Joueur 2";
         }
+
        // Demander les pseudos
         Player j1 = new Player(pseudoJ1);
         if (pseudoJ1.equals(pseudoJ2)) {
@@ -119,7 +120,11 @@ public class GameDuo {
         randomizePlayerColor(j1, j2);
         partie.setPlayer1(j1);
         partie.setPlayer2(j2);
-        partie.setPlayerPlaying(j1);
+        if (aleatoire.nextBoolean()) {
+            partie.setPlayerPlaying(j1);
+        } else  {
+            partie.setPlayerPlaying(j2);   
+        }
         partie.setGrid(new Grid()); //Grille vide
         
         /* lancement de la partie */

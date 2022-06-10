@@ -10,7 +10,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-import application.controleur.GameSolo;
 
 /**
  * Partie jouable par des joueurs avec une grille de jeu

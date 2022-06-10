@@ -9,7 +9,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
-import application.Game;
 import application.Player;
 
 /** TODO commenter la responsabilité de cette classe

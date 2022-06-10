@@ -27,9 +27,6 @@ public class Player {
      * @throws IllegalArgumentException si il y a plus de 10 caractères
      */
     public Player(String pseudo) {
-        if (pseudo.length() > 10) {
-            throw new IllegalArgumentException("Il y a trop de caractères");
-        }
         this.pseudo = pseudo;
     }
     

@@ -12,7 +12,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.scene.control.Button;
 
 /**
  * Classe contrôleur qui gère l'intéractivité avec la vue décrite 
