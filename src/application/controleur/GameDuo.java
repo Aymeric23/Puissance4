@@ -55,11 +55,8 @@ public class GameDuo {
     private static Stage stage;
     private static Scene scene;
     private static Parent racine;
-    
-    /** TODO commenter le rôle de ce champ (attribut, rôle associatif) */
-    public static DateTimeFormatter date = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-    
-    /** TODO commenter le rôle de ce champ (attribut, rôle associatif) */
+
+    /** Partie initialisee lors du chargelent ou de la cration  **/
     public static Game partie;
     
     /**
@@ -152,7 +149,7 @@ public class GameDuo {
      * @param event 
      */
     @FXML
-    private void clickingOnColone(MouseEvent event) {
+    private void clickingOnColonne(MouseEvent event) {
         /* Récupère l'id de la colone cliquée */
         VBox idColone = (VBox) event.getSource();
         /* Récupère l'id sous forme de String et le converti en int*/
@@ -168,12 +165,14 @@ public class GameDuo {
             if (partie.getGrid().isAlign(partie.getPlayerPlaying())) {
                 /*Si gagnant*/
                 partie.setWinner(partie.getPlayerPlaying());
+                System.out.println("Victoire de : " + partie.getPlayerPlaying());
                 alerteVictoire(event);
 
             }
         }
         /* Si grille pleine */
         if (partie.getGrid().isFull()) {
+            System.out.println("Egalité, pas de gagnant");
             alerteEgalite(event);
         }
 
@@ -217,7 +216,6 @@ public class GameDuo {
      */
     @FXML
     private void alerteSauvegarderQuitter(MouseEvent event) {
-        //TODO verifie partie non finie 
         Alert popUp = new Alert(AlertType.WARNING);
         popUp.setAlertType(AlertType.WARNING);
         popUp.setTitle(Puissance4.NOM_LOGICIEL + " - " + NOM_JEU);
@@ -234,16 +232,21 @@ public class GameDuo {
         Optional<ButtonType> option = popUp.showAndWait();
         if (option.get() == sauvegarder) {
             partie.sauvegarder();
-        } else if (option.get() == nePasSauvegarder) {
-            //ne pas sauvegarder
-        } else { //s'il clique sur la croix ou annuler
             /* retour menu */
             try {
                 showSceneMenu(event);
             } catch (IOException exception) {
-                // TODO Auto-generated catch block
                 System.err.println("Une erreur c'est produite : " + exception.getMessage());
             }
+        } else if (option.get() == nePasSauvegarder) {
+            /* retour menu */
+            try {
+                showSceneMenu(event);
+            } catch (IOException exception) {
+                System.err.println("Une erreur c'est produite : " + exception.getMessage());
+            }
+        } else { //s'il clique sur la croix ou annuler
+            //Ne rien faire
         }
     }
 
@@ -363,7 +366,7 @@ public class GameDuo {
      * @param color 
      */
      private void setCircleColor(String id, String color) {
-        System.out.println("looking for " + id);
+        System.out.println("Mise a jour de la couleur du cercle : " + id);
         ((Shape) grille.lookup("#"+id)).setFill(Paint.valueOf(color));
     }
 }

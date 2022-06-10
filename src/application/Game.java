@@ -28,8 +28,6 @@ public class Game {
     /** Separateur de donnees dans le fichier de sauvegarde **/
     private static final String SEPARATEUR_SAUVEGARDE = ",";
 
-    /** nom de cette partie */
-    private String name;
     
     /** mode de jeu de cette partie */
     private int gamemode;
@@ -63,19 +61,6 @@ public class Game {
         this.gamemode = gamemode;
     }
     
-    /**
-     * @return le nom de la partie
-     */
-    public String getName() {
-        return name;
-    }
-    
-    /**
-     * @param name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
     
     
     /**
@@ -178,7 +163,7 @@ public class Game {
      * @return la partie sous forme String
      */
     public String toString() {
-        return ("Game [Name : " + this.name +", gamemode: " + this.gamemode + "]");
+        return ("Game [gamemode: " + this.gamemode + "]");
     }
     
     
@@ -211,8 +196,8 @@ public class Game {
         }
     }
     
-    /** TODO commenter le rôle de cette méthode (SRP)
-     * 
+    /**
+     * Affiche les info de la partie en console
      */
     public void startGamePuzzle() {
         
@@ -220,24 +205,24 @@ public class Game {
     
     
     
-    /** TODO commenter le rôle de cette méthode (SRP)
-     * TODO Exceptions si nécessaire
+    /** 
+     * Affiche les info de la partie en console
      * @param player1 
      * @param player2 
      */
     public void startGameDuo() { 
-        System.out.println("Couleur player1 : " + player1.getColor());
-        System.out.println("Couleur player2 : " + player2.getColor());
+        System.out.println("Couleur joueur1 : " + player1.getColor());
+        System.out.println("Couleur joueur2 : " + player2.getColor());
         grid.showMatrice();
     }
 
-    /** TODO commenter le rôle de cette méthode (SRP)
-     * 
+    /**
+     * Affiche les info de la partie en console
      */
     public void startGameSolo() {
-        GameSolo controler = new GameSolo();
-        //Player player1 = new Player(controler.getPseudoP1(),null);
-        //Player player2 = new Player("IA", null);
+        System.out.println("Couleur joueur1 : " + player1.getColor());
+        System.out.println("Couleur joueur2 : " + player2.getColor());
+        grid.showMatrice();
         
     }
     

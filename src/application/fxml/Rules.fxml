@@ -23,7 +23,7 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="912.0" styleClass="rules-anchoPane">
                <children>
-                  <VBox alignment="TOP_CENTER" layoutY="-2.0" prefHeight="1138.0" prefWidth="877.0" spacing="100.0">
+                  <VBox alignment="TOP_CENTER" layoutY="-4.0" prefHeight="2299.0" prefWidth="870.0" spacing="100.0">
                      <children>
                         <Label alignment="TOP_CENTER" contentDisplay="TOP" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="454.0" styleClass="rules-subtitle" text="Déroulement" textFill="WHITE" textOverrun="CLIP" wrapText="true">
                            <font>
@@ -52,7 +52,7 @@
                         </Label>
                         <HBox alignment="CENTER" prefHeight="169.0" prefWidth="789.0" spacing="100.0">
                            <children>
-                              <Label alignment="TOP_CENTER" contentDisplay="TOP" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="454.0" text="4 pions alignés horizontalement permettent la victoire" textFill="#e5f7ff" textOverrun="CLIP" wrapText="true">
+                              <Label alignment="TOP_CENTER" contentDisplay="TOP" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="454.0" text="4 pions alignés horizontalement permettent la victoire" textAlignment="RIGHT" textFill="#e5f7ff" textOverrun="CLIP" wrapText="true">
                                  <font>
                                     <Font size="29.0" />
                                  </font>
@@ -80,7 +80,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="169.0" prefWidth="789.0" spacing="100.0">
                            <children>
-                              <Label alignment="TOP_CENTER" contentDisplay="TOP" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="454.0" text="4 pions alignés en diagonale permettent la victoire" textFill="#e5f7ff" textOverrun="CLIP" wrapText="true">
+                              <Label alignment="TOP_CENTER" contentDisplay="TOP" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="454.0" text="4 pions alignés en diagonale permettent la victoire" textAlignment="RIGHT" textFill="#e5f7ff" textOverrun="CLIP" wrapText="true">
                                  <font>
                                     <Font size="29.0" />
                                  </font>
@@ -114,7 +114,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="169.0" prefWidth="789.0" spacing="100.0">
                            <children>
-                              <Label alignment="TOP_CENTER" contentDisplay="TOP" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="454.0" text="Faites attention à ne pas trop être concentré sur votre jeu, votre adversaire pourrait en profiter pour aligner 4 de ses pions !" textFill="#e5f7ff" textOverrun="CLIP" wrapText="true">
+                              <Label alignment="TOP_CENTER" contentDisplay="TOP" ellipsisString="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="454.0" text="Faites attention à ne pas trop être concentré sur votre jeu, votre adversaire pourrait en profiter pour aligner 4 de ses pions !" textAlignment="RIGHT" textFill="#e5f7ff" textOverrun="CLIP" wrapText="true">
                                  <font>
                                     <Font size="29.0" />
                                  </font>

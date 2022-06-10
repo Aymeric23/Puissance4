@@ -50,6 +50,7 @@ public class Menu {
         switch (IdBouton) {
             case "solo":
                 destinationFXML = SCENE_SOLO;
+                GameSolo.createSoloGame();
                 break;
             case "duo":
                 destinationFXML = SCENE_DUO;
@@ -63,6 +64,7 @@ public class Menu {
                 sauvegarde = Game.chargerSauvegarde();
                 if (sauvegarde.getGamemode() == 1) {
                     //partie solo
+                    GameSolo.loadSoloGame(sauvegarde);
                     destinationFXML =  SCENE_SOLO;
                 } else if (sauvegarde.getGamemode() == 2) {
                     //partie duo

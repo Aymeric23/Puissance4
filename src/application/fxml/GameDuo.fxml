@@ -24,7 +24,7 @@
             </VBox>
             <HBox fx:id="grille" prefHeight="100.0" prefWidth="200.0" styleClass="grid">
                <children>
-                  <VBox fx:id="0" onMouseClicked="#clickingOnColone" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
+                  <VBox fx:id="0" onMouseClicked="#clickingOnColonne" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
                      <children>
                         <Circle fx:id="00" fill="WHITE" radius="48.0" stroke="WHITE" strokeWidth="2.0" />
                         <Circle fx:id="01" fill="WHITE" radius="48.0" stroke="WHITE" strokeWidth="2.0" />
@@ -34,7 +34,7 @@
                         <Circle fx:id="05" fill="WHITE" radius="48.0" stroke="WHITE" strokeWidth="2.0" />
                      </children>
                   </VBox>
-                  <VBox fx:id="1" onMouseClicked="#clickingOnColone" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
+                  <VBox fx:id="1" onMouseClicked="#clickingOnColonne" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
                      <children>
                         <Circle fx:id="10" fill="WHITE" radius="48.0" stroke="WHITE" strokeWidth="2.0" />
                         <Circle fx:id="11" fill="WHITE" radius="48.0" stroke="WHITE" strokeWidth="2.0" />
@@ -44,7 +44,7 @@
                         <Circle fx:id="15" fill="WHITE" radius="48.0" stroke="WHITE" strokeWidth="2.0" />
                      </children>
                   </VBox>
-                  <VBox fx:id="2" onMouseClicked="#clickingOnColone" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
+                  <VBox fx:id="2" onMouseClicked="#clickingOnColonne" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
                      <children>
                         <Circle fx:id="20" fill="WHITE" radius="48.0" stroke="WHITE" strokeWidth="2.0" />
                         <Circle fx:id="21" fill="WHITE" radius="48.0" stroke="WHITE" strokeWidth="2.0" />
@@ -54,7 +54,7 @@
                         <Circle fx:id="25" fill="WHITE" radius="48.0" stroke="WHITE" strokeWidth="2.0" />
                      </children>
                   </VBox>
-                  <VBox fx:id="3" onMouseClicked="#clickingOnColone" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
+                  <VBox fx:id="3" onMouseClicked="#clickingOnColonne" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
                      <children>
                         <Circle fx:id="30" fill="WHITE" radius="48.0" stroke="WHITE" strokeWidth="2.0" />
                         <Circle fx:id="31" fill="WHITE" radius="48.0" stroke="WHITE" strokeWidth="2.0" />
@@ -64,7 +64,7 @@
                         <Circle fx:id="35" fill="WHITE" radius="48.0" stroke="WHITE" strokeWidth="2.0" />
                      </children>
                   </VBox>
-                  <VBox fx:id="4" onMouseClicked="#clickingOnColone" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
+                  <VBox fx:id="4" onMouseClicked="#clickingOnColonne" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
                      <children>
                         <Circle fx:id="40" fill="WHITE" radius="48.0" stroke="WHITE" strokeWidth="2.0" />
                         <Circle fx:id="41" fill="WHITE" radius="48.0" stroke="WHITE" strokeWidth="2.0" />
@@ -74,7 +74,7 @@
                         <Circle fx:id="45" fill="WHITE" radius="48.0" stroke="WHITE" strokeWidth="2.0" />
                      </children>
                   </VBox>
-                  <VBox fx:id="5" onMouseClicked="#clickingOnColone" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
+                  <VBox fx:id="5" onMouseClicked="#clickingOnColonne" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
                      <children>
                         <Circle fx:id="50" fill="WHITE" radius="48.0" stroke="WHITE" strokeWidth="2.0" />
                         <Circle fx:id="51" fill="WHITE" radius="48.0" stroke="WHITE" strokeWidth="2.0" />
@@ -84,7 +84,7 @@
                         <Circle fx:id="55" fill="WHITE" radius="48.0" stroke="WHITE" strokeWidth="2.0" />
                      </children>
                   </VBox>
-                  <VBox fx:id="6" onMouseClicked="#clickingOnColone" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
+                  <VBox fx:id="6" onMouseClicked="#clickingOnColonne" prefHeight="200.0" prefWidth="100.0" styleClass="grid-column">
                      <children>
                         <Circle fx:id="60" fill="WHITE" radius="48.0" stroke="WHITE" strokeWidth="2.0" />
                         <Circle fx:id="61" fill="WHITE" radius="48.0" stroke="WHITE" strokeWidth="2.0" />

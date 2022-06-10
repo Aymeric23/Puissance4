@@ -182,34 +182,6 @@ public class Grid {
     }
     
 
-    /** TODO commenter le rôle de cette méthode (SRP)
-     * @param x 
-     * @param y 
-     * @param joueur
-     * @return TODO
-     */
-    public boolean isAlignHorrizontallyBis(int x, int y, Player joueur) {
-        int count = 0;
-        boolean ok = true;
-        for(int i = x ; i<matrice.length && ok; i++) {
-            if(matrice[y][i] == joueur.getPrefix()) {
-                count ++;
-            } else {
-                ok = false;
-            }
-        }
-        ok = true;
-        for(int i = x ; i>0 && ok; i--) {
-            if(matrice[y][i] == joueur.getPrefix()) {
-                count ++;
-            } else {
-                ok = false;
-            }
-        }
-        System.out.println(count);
-        return count-1>=4;
-    }
-
     /**
      * Vérifie l'alignement diagonal de quatre jetons de la couleur d'un joueur
      * @param joueur joueur dont on vérifie l'alignement diagonal de ces pions
@@ -445,10 +417,9 @@ public class Grid {
 
     
 
-
-
-
-    /*TODO simplifier et utiliser des méthodes existantes*/
+    /**
+     * @return grille sous forme de String
+     */
     @Override
     public String toString() {
         String gridString = "";
