@@ -33,7 +33,7 @@ import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 
 /**
- * Classe contrôleur qui gère l'intéractivité avec la vue décrite 
+ * Classe contrÃ´leur qui gÃ¨re l'intÃ©ractivitÃ© avec la vue dÃ©crite 
  * dans le fichier fxml GameSolo.fxml
  * @author aymeric.thevenet
  */
@@ -53,7 +53,7 @@ public class GameSolo {
     private VBox cardP1,
                  cardP2;
     
-    private static final String NOM_JEU = "Soloe";
+    private static final String NOM_JEU = "Solo";
     private static Stage stage;
     private static Scene scene;
     private static Parent racine;
@@ -72,7 +72,7 @@ public class GameSolo {
     private void showSceneMenu(MouseEvent event) throws IOException {
         //Demande a l'utilisateur s'il veut sauvegarder avant de quitter
         /* si l'utilisateur souhaite quitter */
-        // création d'un chargeur de code FXML
+        // crÃ©ation d'un chargeur de code FXML
         FXMLLoader chargeurFXML = new FXMLLoader();
 
         // charge le fichier FXML
@@ -118,7 +118,7 @@ public class GameSolo {
             pseudoJ2 += "2";
         }
         Player j2 = new Player(pseudoJ2);
-        /*Affecte une couleur de manière aléatoire*/
+        /*Affecte une couleur de maniÃ¨re alÃ©atoire*/
         randomizePlayerColor(j1, j2);
         partie.setPlayer1(j1);
         partie.setPlayer2(j2);
@@ -131,7 +131,7 @@ public class GameSolo {
     
     
     /** 
-     * Affecte une couleur aux 2 joueurs de façon aléatoire
+     * Affecte une couleur aux 2 joueurs de faÃ§on alÃ©atoire
      * @param Player1 Joueur1
      * @param Player2 Joueur2
      */
@@ -160,7 +160,7 @@ public class GameSolo {
     
     private boolean checkForEgalite(MouseEvent event) {
         if (partie.getGrid().isFull()) {
-            System.out.println("Egalité, pas de gagnant");
+            System.out.println("EgalitÃ©, pas de gagnant");
             alerteEgalite(event);
             return true;
         }
@@ -168,7 +168,7 @@ public class GameSolo {
     }
     
     /** 
-     * Se déclenche lorsque le joueur clic sur une colone
+     * Se dÃ©clenche lorsque le joueur clic sur une colone
      * @param event 
      */
     @FXML
@@ -176,9 +176,9 @@ public class GameSolo {
         int colonneChosieOrdinateur;
         /* Si c'est au joueur de jouer */
         if (partie.getPlayerPlaying() == partie.getPlayer1()) {
-            /* Récupère l'id de la colone cliquée */
+            /* RÃ©cupÃ¨re l'id de la colone cliquÃ©e */
             VBox idColone = (VBox) event.getSource();
-            /* Récupère l'id sous forme de String et le converti en int*/
+            /* RÃ©cupÃ¨re l'id sous forme de String et le converti en int*/
             int idColoneInt = Integer.parseInt(idColone.getId());
 
             if (!partie.getGrid().isFullColumn(idColoneInt)) {
@@ -215,7 +215,7 @@ public class GameSolo {
     }
     
     /**
-     * Lorsque la partie ce lance, les pseudos sont demandés 
+     * Lorsque la partie ce lance, les pseudos sont demandÃ©s 
      * @return pseudo1 saisi par l'utilisateur
      */
     private static String alertePeudoJoueur1() {        
@@ -239,7 +239,7 @@ public class GameSolo {
         popUp.setAlertType(AlertType.WARNING);
         popUp.setTitle(Puissance4.NOM_LOGICIEL + " - " + NOM_JEU);
         popUp.setHeaderText("Attention !\n"
-                        + "Vous êtes sur le point de quitter une partie en cours.\n"
+                        + "Vous Ãªtes sur le point de quitter une partie en cours.\n"
                         + "Souhaitez-vous sauvegarder la partie ?");
         ButtonType sauvegarder = new ButtonType("Sauvegarder et quitter");
         ButtonType nePasSauvegarder = new ButtonType("Quitter sans sauvegarder");
@@ -280,7 +280,7 @@ public class GameSolo {
         popUp.setAlertType(AlertType.INFORMATION);
         popUp.setTitle(Puissance4.NOM_LOGICIEL + " - " + NOM_JEU);
         popUp.setHeaderText("Fin de la partie !\n"
-                        + "La partie est remportée par " 
+                        + "La partie est remportÃ©e par " 
                         + partie.getWinner().getPseudo() + " !");
         ButtonType retournerAuMenu = new ButtonType("Retourner au menu principal");
 
@@ -305,7 +305,7 @@ public class GameSolo {
         popUp.setAlertType(AlertType.INFORMATION);
         popUp.setTitle(Puissance4.NOM_LOGICIEL + " - " + NOM_JEU);
         popUp.setHeaderText("Fin de la partie !\n"
-                        + "Aucun joueur n'a remporté la partie ! ");
+                        + "Aucun joueur n'a remportÃ© la partie ! ");
         ButtonType retournerAuMenu = new ButtonType("Retourner au menu principal");
 
         popUp.getButtonTypes().clear();
@@ -321,7 +321,7 @@ public class GameSolo {
     }
     
     /**
-     * Algorithme de l'ordinateur simple ( choisi une case aléatoirement )
+     * Algorithme de l'ordinateur simple ( choisi une case alÃ©atoirement )
      * @return le numero de la colone aleatoire choisie
      * @throws IllegalArgumentException si toutes les colones sont pleines
      */
@@ -349,7 +349,7 @@ public class GameSolo {
      * Lorsque le joueur ajoute un jeton
      * @param x 
      * @param y 
-     * @param colone à modifier
+     * @param colone Ã  modifier
      * @param player 
      * 
      */
